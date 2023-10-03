@@ -1,12 +1,12 @@
 import adapters.InMemoryCandidateRepository;
-import domain.usecases.ElectedCandidates;
-import presentation.ElectedCandidatesView;
+import domain.usecases.NumberOfElectedCandidatesUseCase;
+import presentation.NumberOfElectedCandidatesView;
 
 public class App {
     public static void main(String[] args) {
         InMemoryCandidateRepository candidateRepository = new InMemoryCandidateRepository();
-        ElectedCandidates electedCandidates = new ElectedCandidates(candidateRepository);
-        ElectedCandidatesView electedCandidatesView = new ElectedCandidatesView(electedCandidates);
-        electedCandidatesView.handle();
+        NumberOfElectedCandidatesUseCase numberOfElectedCandidatesUseCase = new NumberOfElectedCandidatesUseCase(candidateRepository);
+        NumberOfElectedCandidatesView numberOfelectedCandidatesView = new NumberOfElectedCandidatesView(numberOfElectedCandidatesUseCase);
+        numberOfelectedCandidatesView.handle();
     }
 }

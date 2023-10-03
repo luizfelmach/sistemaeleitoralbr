@@ -3,10 +3,10 @@ package domain.usecases;
 import domain.model.Candidate;
 import repository.CandidateRepository;
 
-public class ElectedCandidates {
+public class NumberOfElectedCandidatesUseCase {
     CandidateRepository candidateRepository;
 
-    public ElectedCandidates(CandidateRepository candidateRepository) {
+    public NumberOfElectedCandidatesUseCase(CandidateRepository candidateRepository) {
         this.candidateRepository = candidateRepository;
     }
 
