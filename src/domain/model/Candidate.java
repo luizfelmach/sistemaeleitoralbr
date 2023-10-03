@@ -8,6 +8,6 @@ public class Candidate {
     }
 
     public void setIsElected(Boolean isElected) {
-        this.isElected = true;
+        this.isElected = isElected;
     }
 }
