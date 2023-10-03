@@ -14,7 +14,8 @@ public class ElectedCandidatesView {
         System.out.println("Deputados xxx eleitos:");
         int position = 1;
         for (Candidate candidate : electedCandidatesUseCase.execute()) {
-            System.out.printf("%d - %s (%s, %d votos)\n", position, "teste", "teste", 100);
+            System.out.printf("%d - %s (%s, %d votos)\n", position, candidate.getName(), candidate.getPoliticalParty(),
+                    candidate.getTotalVotes());
         }
     }
 }
