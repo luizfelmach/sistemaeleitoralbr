@@ -5,7 +5,7 @@ import domain.usecases.ElectedCandidates;
 public class ElectedCandidatesView {
     ElectedCandidates electedCandidates;
 
-    ElectedCandidatesView(ElectedCandidates electedCandidates) {
+    public ElectedCandidatesView(ElectedCandidates electedCandidates) {
         this.electedCandidates = electedCandidates;
     }
 

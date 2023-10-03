@@ -6,7 +6,7 @@ import repository.CandidateRepository;
 public class ElectedCandidates {
     CandidateRepository candidateRepository;
 
-    ElectedCandidates(CandidateRepository candidateRepository) {
+    public ElectedCandidates(CandidateRepository candidateRepository) {
         this.candidateRepository = candidateRepository;
     }
 
