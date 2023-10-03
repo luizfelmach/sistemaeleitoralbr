@@ -6,10 +6,10 @@ import java.util.Set;
 import domain.model.Candidate;
 import repository.CandidateRepository;
 
-public class ElectedCandidates {
+public class ElectedCandidatesUseCase {
     CandidateRepository candidateRepository;
 
-    public ElectedCandidates(CandidateRepository candidateRepository) {
+    public ElectedCandidatesUseCase(CandidateRepository candidateRepository) {
         this.candidateRepository = candidateRepository;
     }
 
