@@ -1,16 +1,18 @@
-package presentation;
+package presentation.terminal;
 
 import domain.entity.Candidate;
 import domain.usecases.ElectedCandidatesUseCase;
+import factory.usecases.ElectedCandidatesFactory;
+import presentation.View;
 
-public class ElectedCandidatesView {
+public class ElectedCandidatesView implements View {
     ElectedCandidatesUseCase electedCandidatesUseCase;
 
-    public ElectedCandidatesView(ElectedCandidatesUseCase electedCandidatesUseCase) {
-        this.electedCandidatesUseCase = electedCandidatesUseCase;
+    public ElectedCandidatesView() {
+        this.electedCandidatesUseCase = new ElectedCandidatesFactory().create();
     }
 
-    public void handle() {
+    public void view() {
         System.out.println("Deputados xxx eleitos:");
         int position = 1;
         for (Candidate candidate : electedCandidatesUseCase.execute()) {
