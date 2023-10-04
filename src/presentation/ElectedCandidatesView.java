@@ -1,6 +1,6 @@
 package presentation;
 
-import domain.model.Candidate;
+import domain.entity.Candidate;
 import domain.usecases.ElectedCandidatesUseCase;
 
 public class ElectedCandidatesView {

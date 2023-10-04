@@ -3,7 +3,7 @@ package domain.usecases;
 import java.util.HashSet;
 import java.util.Set;
 
-import domain.model.Candidate;
+import domain.entity.Candidate;
 import repository.CandidateRepository;
 
 public class ElectedCandidatesUseCase {

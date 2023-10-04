@@ -1,7 +1,8 @@
 package repository;
 
 import java.util.Set;
-import domain.model.Candidate;
+
+import domain.entity.Candidate;
 
 public interface CandidateRepository {
     public Set<Candidate> getAllCandidates();
