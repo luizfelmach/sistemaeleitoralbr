@@ -1,4 +1,4 @@
-package factory;
+package factory.repository;
 
 import adapters.InMemoryCandidateRepository;
 import domain.repository.CandidateRepository;
