@@ -1,5 +1,6 @@
 package presentation.terminal;
 
+import config.AppConfig;
 import domain.entity.Candidate;
 import domain.usecases.ElectedCandidatesUseCase;
 import factory.usecases.ElectedCandidatesFactory;
@@ -13,7 +14,7 @@ public class ElectedCandidatesView implements View {
     }
 
     public void view() {
-        System.out.println("Deputados xxx eleitos:");
+        System.out.printf("Deputados %s eleitos:", AppConfig.getElectionType());
         int position = 1;
         for (Candidate candidate : electedCandidatesUseCase.execute()) {
             System.out.printf("%d - %s (%s, %d votos)\n",
