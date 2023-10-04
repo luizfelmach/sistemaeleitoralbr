@@ -9,5 +9,6 @@ public class App {
 
         numberOfElectedCandidates.view();
         electedCandidates.view();
+
     }
 }
