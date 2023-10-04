@@ -1,4 +1,4 @@
-package repository;
+package domain.repository;
 
 import java.util.Set;
 

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import domain.entity.Candidate;
-import repository.CandidateRepository;
+import domain.repository.CandidateRepository;
 
 public class ElectedCandidatesUseCase {
     CandidateRepository candidateRepository;

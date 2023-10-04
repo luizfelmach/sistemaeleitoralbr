@@ -1,7 +1,7 @@
 package factory;
 
 import adapters.InMemoryCandidateRepository;
-import repository.CandidateRepository;
+import domain.repository.CandidateRepository;
 
 public class CandidateRepositoryFactory {
     CandidateRepository candidateRepository = new InMemoryCandidateRepository();

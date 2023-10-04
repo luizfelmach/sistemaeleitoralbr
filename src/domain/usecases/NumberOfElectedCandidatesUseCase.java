@@ -1,7 +1,7 @@
 package domain.usecases;
 
 import domain.entity.Candidate;
-import repository.CandidateRepository;
+import domain.repository.CandidateRepository;
 
 public class NumberOfElectedCandidatesUseCase {
     CandidateRepository candidateRepository;
