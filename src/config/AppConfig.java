@@ -9,9 +9,9 @@ public class AppConfig {
 
     public static String getElectionType() {
         if (electionType == ElectionType.FEDERAL) {
-            return "federal";
+            return "federais";
         }
-        return "estadual";
+        return "estaduais";
     }
 
     public enum ElectionType {
