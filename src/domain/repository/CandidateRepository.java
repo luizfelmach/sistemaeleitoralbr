@@ -8,4 +8,6 @@ public interface CandidateRepository {
     public Set<Candidate> getAllCandidates();
 
     public Set<Candidate> getElectedCandidates();
+
+    public int getNumberOfElectedCandidates();
 }
