@@ -5,12 +5,17 @@ public class Candidate {
     private PoliticalParty politicalParty;
     private int totalVotes;
     private int rankingMostVoted;
+    private Genre genre;
     private boolean isElected;
 
     public Candidate(String name, PoliticalParty politicalParty, boolean isElected) {
         this.name = name;
         this.politicalParty = politicalParty;
         this.isElected = isElected;
+    }
+
+    public enum Genre {
+        MALE, FEMALE;
     }
 
     public String getName() {
@@ -43,5 +48,9 @@ public class Candidate {
 
     public int getRankingMostVoted() {
         return rankingMostVoted;
+    }
+
+    public Genre getGenre() {
+        return genre;
     }
 }
