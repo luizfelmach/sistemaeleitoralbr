@@ -64,4 +64,9 @@ public class InMemoryElectionRepository implements ElectionRepository {
         }
         return allCandidates;
     }
+
+    @Override
+    public Set<PoliticalParty> getAllPoliticalParty() {
+        throw new UnsupportedOperationException("Unimplemented method 'getAllPoliticalParty'");
+    }
 }

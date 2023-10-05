@@ -49,4 +49,32 @@ public class PoliticalParty {
     public int getPoliticalPartyNumber() {
         return politicalPartyNumber;
     }
+
+    public Candidate getMostVoted() {
+        Candidate candidateMostVoted = null;
+        for (Candidate candidate : candidates) {
+            if (candidateMostVoted == null) {
+                candidateMostVoted = candidate;
+                continue;
+            }
+            if (candidateMostVoted.getTotalVotes() < candidate.getTotalVotes()) {
+                candidateMostVoted = candidate;
+            }
+        }
+        return candidateMostVoted;
+    }
+
+    public Candidate getLeastVoted() {
+        Candidate candidateMostVoted = null;
+        for (Candidate candidate : candidates) {
+            if (candidateMostVoted == null) {
+                candidateMostVoted = candidate;
+                continue;
+            }
+            if (candidateMostVoted.getTotalVotes() > candidate.getTotalVotes()) {
+                candidateMostVoted = candidate;
+            }
+        }
+        return candidateMostVoted;
+    }
 }
