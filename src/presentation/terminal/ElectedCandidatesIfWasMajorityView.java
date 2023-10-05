@@ -16,13 +16,11 @@ public class ElectedCandidatesIfWasMajorityView implements View {
     public void view() {
         System.out.println("Teriam sido eleitos se a votação fosse majoritária, e não foram eleitos:");
         System.out.println("(com sua posição no ranking de mais votados)");
-        int position = 1;
         for (Candidate candidate : electedCandidatesIfWasMajorityUseCase.execute()) {
             System.out.printf("%d - %s (%s, %d votos)\n",
-                    position, candidate.getName(),
+                    candidate.getRankingMostVoted(), candidate.getName(),
                     candidate.getPoliticalParty(),
                     candidate.getTotalVotes());
-            position += 1;
         }
     }
 

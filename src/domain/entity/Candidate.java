@@ -46,7 +46,7 @@ public class Candidate {
         this.rankingMostVoted = rankingMostVoted;
     }
 
-    public int geRankingMostVoted() {
+    public int getRankingMostVoted() {
         return rankingMostVoted;
     }
 

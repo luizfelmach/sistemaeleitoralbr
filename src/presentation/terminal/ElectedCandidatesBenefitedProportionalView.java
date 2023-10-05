@@ -17,13 +17,11 @@ public class ElectedCandidatesBenefitedProportionalView implements View {
     public void view() {
         System.out.println("Eleitos, que se beneficiaram do sistema proporcional:");
         System.out.println("(com sua posição no ranking de mais votados)");
-        int position = 1;
         for (Candidate candidate : electedCandidatesBenefitedProportionalUseCase.execute()) {
             System.out.printf("%d - %s (%s, %d votos)\n",
-                    position, candidate.getName(),
+                    candidate.getRankingMostVoted(), candidate.getName(),
                     candidate.getPoliticalParty(),
                     candidate.getTotalVotes());
-            position += 1;
         }
     }
 
