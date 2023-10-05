@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import domain.entity.Candidate;
-import domain.repository.CandidateRepository;
+import domain.repository.ElectionRepository;
 
 public class ElectedCandidatesBenefitedProportionalUseCase {
-    CandidateRepository candidateRepository;
+    ElectionRepository electionRepository;
 
-    public ElectedCandidatesBenefitedProportionalUseCase(CandidateRepository candidateRepository) {
-        this.candidateRepository = candidateRepository;
+    public ElectedCandidatesBenefitedProportionalUseCase(ElectionRepository electionRepository) {
+        this.electionRepository = electionRepository;
     }
 
     public List<Candidate> execute() {
         List<Candidate> candidates = new ArrayList<>();
-        List<Candidate> mostVotedCandidates = candidateRepository.getMostVotedCandidates();
-        int start = candidateRepository.getNumberOfElectedCandidates();
+        List<Candidate> mostVotedCandidates = electionRepository.getMostVotedCandidates();
+        int start = electionRepository.getNumberOfElectedCandidates();
         for (int i = start; i < mostVotedCandidates.size(); i++) {
             Candidate candidate = mostVotedCandidates.get(i);
             if (candidate.isElected()) {

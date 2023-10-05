@@ -3,16 +3,16 @@ package domain.usecases;
 import java.util.Set;
 
 import domain.entity.Candidate;
-import domain.repository.CandidateRepository;
+import domain.repository.ElectionRepository;
 
 public class ElectedCandidatesUseCase {
-    CandidateRepository candidateRepository;
+    ElectionRepository electionRepository;
 
-    public ElectedCandidatesUseCase(CandidateRepository candidateRepository) {
-        this.candidateRepository = candidateRepository;
+    public ElectedCandidatesUseCase(ElectionRepository electionRepository) {
+        this.electionRepository = electionRepository;
     }
 
     public Set<Candidate> execute() {
-        return candidateRepository.getElectedCandidates();
+        return electionRepository.getElectedCandidates();
     }
 }

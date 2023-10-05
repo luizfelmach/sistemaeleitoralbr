@@ -1,15 +1,15 @@
 package domain.usecases;
 
-import domain.repository.CandidateRepository;
+import domain.repository.ElectionRepository;
 
 public class NumberOfElectedCandidatesUseCase {
-    CandidateRepository candidateRepository;
+    ElectionRepository electionRepository;
 
-    public NumberOfElectedCandidatesUseCase(CandidateRepository candidateRepository) {
-        this.candidateRepository = candidateRepository;
+    public NumberOfElectedCandidatesUseCase(ElectionRepository electionRepository) {
+        this.electionRepository = electionRepository;
     }
 
     public int execute() {
-        return candidateRepository.getNumberOfElectedCandidates();
+        return electionRepository.getNumberOfElectedCandidates();
     }
 }

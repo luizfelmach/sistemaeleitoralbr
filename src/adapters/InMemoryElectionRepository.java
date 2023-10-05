@@ -9,12 +9,12 @@ import java.util.Set;
 
 import domain.entity.Candidate;
 import domain.entity.PoliticalParty;
-import domain.repository.CandidateRepository;
+import domain.repository.ElectionRepository;
 
-public class InMemoryCandidateRepository implements CandidateRepository {
+public class InMemoryElectionRepository implements ElectionRepository {
     private Set<Candidate> candidates = new HashSet<>();
 
-    public InMemoryCandidateRepository() {
+    public InMemoryElectionRepository() {
         candidates.add(new Candidate("Lula", new PoliticalParty("PT"), true));
         candidates.add(new Candidate("Fulano", new PoliticalParty("PT"), true));
         candidates.add(new Candidate("John Doe", new PoliticalParty("PSOl"), true));

@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import domain.entity.Candidate;
-import domain.repository.CandidateRepository;
+import domain.repository.ElectionRepository;
 
 public class ElectedCandidatesIfWasMajorityUseCase {
-    CandidateRepository candidateRepository;
+    ElectionRepository electionRepository;
 
-    public ElectedCandidatesIfWasMajorityUseCase(CandidateRepository candidateRepository) {
-        this.candidateRepository = candidateRepository;
+    public ElectedCandidatesIfWasMajorityUseCase(ElectionRepository electionRepository) {
+        this.electionRepository = electionRepository;
     }
 
     public List<Candidate> execute() {
         List<Candidate> candidates = new ArrayList<>();
-        List<Candidate> mostVotedCandidates = candidateRepository.getMostVotedCandidates();
-        int numberOfElectedCandidates = candidateRepository.getNumberOfElectedCandidates();
+        List<Candidate> mostVotedCandidates = electionRepository.getMostVotedCandidates();
+        int numberOfElectedCandidates = electionRepository.getNumberOfElectedCandidates();
         for (int i = 0; i < numberOfElectedCandidates; i++) {
             Candidate candidate = mostVotedCandidates.get(i);
             if (!candidate.isElected()) {

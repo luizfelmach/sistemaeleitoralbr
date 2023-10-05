@@ -5,7 +5,7 @@ import java.util.Set;
 
 import domain.entity.Candidate;
 
-public interface CandidateRepository {
+public interface ElectionRepository {
     public Set<Candidate> getAllCandidates();
 
     public Set<Candidate> getElectedCandidates();

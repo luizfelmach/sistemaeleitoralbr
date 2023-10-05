@@ -1,13 +1,13 @@
 package factory.usecases;
 
-import domain.repository.CandidateRepository;
+import domain.repository.ElectionRepository;
 import domain.usecases.ElectedCandidatesBenefitedProportionalUseCase;
-import factory.repository.CandidateRepositoryFactory;
+import factory.repository.ElectionRepositoryFactory;
 
 public class ElectedCandidatesBenefitedProportionalFactory {
-    private CandidateRepository candidateRepository = new CandidateRepositoryFactory().create();
+    private ElectionRepository electionRepository = new ElectionRepositoryFactory().create();
 
     public ElectedCandidatesBenefitedProportionalUseCase create() {
-        return new ElectedCandidatesBenefitedProportionalUseCase(candidateRepository);
+        return new ElectedCandidatesBenefitedProportionalUseCase(electionRepository);
     }
 }
