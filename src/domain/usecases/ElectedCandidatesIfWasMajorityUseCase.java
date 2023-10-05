@@ -6,10 +6,10 @@ import java.util.List;
 import domain.entity.Candidate;
 import domain.repository.CandidateRepository;
 
-public class ElectedCandidatesIfWasMajority {
+public class ElectedCandidatesIfWasMajorityUseCase {
     CandidateRepository candidateRepository;
 
-    public ElectedCandidatesIfWasMajority(CandidateRepository candidateRepository) {
+    public ElectedCandidatesIfWasMajorityUseCase(CandidateRepository candidateRepository) {
         this.candidateRepository = candidateRepository;
     }
 
