@@ -11,7 +11,7 @@ import domain.entity.Candidate;
 import domain.repository.CandidateRepository;
 
 public class InMemoryCandidateRepository implements CandidateRepository {
-    private Set<Candidate> candidates;
+    private Set<Candidate> candidates = new HashSet<>();
 
     public InMemoryCandidateRepository() {
         candidates.add(new Candidate("Lula", "PT", 10, true));
@@ -22,6 +22,9 @@ public class InMemoryCandidateRepository implements CandidateRepository {
 
         candidates.add(new Candidate("MARCELO SANTOS", "PODE", 5, false));
         candidates.add(new Candidate("BRUNO SILVA", "PT", 250, false));
+        candidates.add(new Candidate("PEDRO SILVA", "PT", 25, false));
+        candidates.add(new Candidate("JOAO SILVA", "PT", 10, false));
+        candidates.add(new Candidate("MARIA SILVA", "PT", 30, false));
 
     }
 
@@ -52,7 +55,7 @@ public class InMemoryCandidateRepository implements CandidateRepository {
         Collections.sort(allCandidates, new Comparator<Candidate>() {
             @Override
             public int compare(Candidate c1, Candidate c2) {
-                return c1.getTotalVotes() - c2.getTotalVotes();
+                return c2.getTotalVotes() - c1.getTotalVotes();
             }
         });
         return allCandidates;

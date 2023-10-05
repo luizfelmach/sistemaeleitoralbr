@@ -14,13 +14,14 @@ public class ElectedCandidatesView implements View {
     }
 
     public void view() {
-        System.out.printf("Deputados %s eleitos:", AppConfig.getElectionType());
+        System.out.printf("Deputados %s eleitos:\n", AppConfig.getElectionType());
         int position = 1;
         for (Candidate candidate : electedCandidatesUseCase.execute()) {
             System.out.printf("%d - %s (%s, %d votos)\n",
                     position, candidate.getName(),
                     candidate.getPoliticalParty(),
                     candidate.getTotalVotes());
+            position += 1;
         }
     }
 }
