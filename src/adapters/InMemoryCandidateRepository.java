@@ -11,4 +11,9 @@ public class InMemoryCandidateRepository implements CandidateRepository {
     public Set<Candidate> getAllCandidates() {
         return new HashSet<>();
     }
+
+    @Override
+    public int getNumberOfElectedCandidates() {
+        return 0;
+    }
 }
