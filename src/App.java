@@ -1,4 +1,5 @@
 import presentation.View;
+import presentation.terminal.ElectedCandidatesBenefitedProportionalView;
 import presentation.terminal.ElectedCandidatesIfWasMajorityView;
 import presentation.terminal.ElectedCandidatesView;
 import presentation.terminal.MostVotedCandidatesView;
@@ -10,11 +11,13 @@ public class App {
         View electedCandidates = new ElectedCandidatesView();
         View mostVotedCandidates = new MostVotedCandidatesView();
         View electedCandidatesIfWasMajority = new ElectedCandidatesIfWasMajorityView();
+        View electedCandidatesBenefitedProportionalView = new ElectedCandidatesBenefitedProportionalView();
 
         numberOfElectedCandidates.view();
         electedCandidates.view();
         mostVotedCandidates.view();
         electedCandidatesIfWasMajority.view();
+        electedCandidatesBenefitedProportionalView.view();
 
     }
 }
