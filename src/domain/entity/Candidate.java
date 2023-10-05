@@ -4,6 +4,7 @@ public class Candidate {
     private String name;
     private String politicalParty;
     private int totalVotes;
+    private int rankingMostVoted;
     private boolean isElected;
 
     public Candidate(String name, String politicalParty, int totalVotes, boolean isElected) {
@@ -39,6 +40,14 @@ public class Candidate {
 
     public boolean isElected() {
         return isElected;
+    }
+
+    public void setRankingMostVoted(int rankingMostVoted) {
+        this.rankingMostVoted = rankingMostVoted;
+    }
+
+    public int geRankingMostVoted() {
+        return rankingMostVoted;
     }
 
 }
