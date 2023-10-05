@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class PoliticalParty {
     private String name;
+    private int politicalPartyNumber;
     private int rollCallVotes;
     private int captionVotes;
     Set<Candidate> candidates = new HashSet<>();
@@ -43,5 +44,9 @@ public class PoliticalParty {
 
     public void addCaptionVote(int partial) {
         rollCallVotes += partial;
+    }
+
+    public int getPoliticalPartyNumber() {
+        return politicalPartyNumber;
     }
 }
