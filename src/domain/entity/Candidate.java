@@ -7,9 +7,9 @@ public class Candidate {
     private int rankingMostVoted;
     private boolean isElected;
 
-    public Candidate(String name, int totalVotes, boolean isElected) {
+    public Candidate(String name, PoliticalParty politicalParty, boolean isElected) {
         this.name = name;
-        this.totalVotes = totalVotes;
+        this.politicalParty = politicalParty;
         this.isElected = isElected;
     }
 
@@ -19,6 +19,10 @@ public class Candidate {
 
     public int getTotalVotes() {
         return totalVotes;
+    }
+
+    public void addVotes(int partial) {
+        totalVotes += partial;
     }
 
     public PoliticalParty getPoliticalParty() {
@@ -40,5 +44,4 @@ public class Candidate {
     public int getRankingMostVoted() {
         return rankingMostVoted;
     }
-
 }

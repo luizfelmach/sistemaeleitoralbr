@@ -20,7 +20,7 @@ public class ElectedCandidatesBenefitedProportionalView implements View {
         for (Candidate candidate : electedCandidatesBenefitedProportionalUseCase.execute()) {
             System.out.printf("%d - %s (%s, %d votos)\n",
                     candidate.getRankingMostVoted(), candidate.getName(),
-                    candidate.getPoliticalParty(),
+                    candidate.getPoliticalParty().getName(),
                     candidate.getTotalVotes());
         }
     }

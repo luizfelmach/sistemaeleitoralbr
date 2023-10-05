@@ -17,7 +17,7 @@ public class MostVotedCandidatesView implements View {
         for (Candidate candidate : mostVotedCandidatesUseCase.execute()) {
             System.out.printf("%d - %s (%s, %d votos)\n",
                     candidate.getRankingMostVoted(), candidate.getName(),
-                    candidate.getPoliticalParty(),
+                    candidate.getPoliticalParty().getName(),
                     candidate.getTotalVotes());
         }
     }

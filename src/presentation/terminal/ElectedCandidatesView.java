@@ -19,7 +19,7 @@ public class ElectedCandidatesView implements View {
         for (Candidate candidate : electedCandidatesUseCase.execute()) {
             System.out.printf("%d - %s (%s, %d votos)\n",
                     position, candidate.getName(),
-                    candidate.getPoliticalParty(),
+                    candidate.getPoliticalParty().getName(),
                     candidate.getTotalVotes());
             position += 1;
         }

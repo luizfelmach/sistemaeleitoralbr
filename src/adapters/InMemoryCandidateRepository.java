@@ -8,22 +8,23 @@ import java.util.List;
 import java.util.Set;
 
 import domain.entity.Candidate;
+import domain.entity.PoliticalParty;
 import domain.repository.CandidateRepository;
 
 public class InMemoryCandidateRepository implements CandidateRepository {
     private Set<Candidate> candidates = new HashSet<>();
 
     public InMemoryCandidateRepository() {
-        candidates.add(new Candidate("Lula", 11, true));
-        candidates.add(new Candidate("Fulano", 200, true));
-        candidates.add(new Candidate("John Doe", 100, true));
-        candidates.add(new Candidate("Sicrano", 40, true));
-        candidates.add(new Candidate("Bolsonaro", 90, true));
-        candidates.add(new Candidate("MARCELO SANTOS", 5, false));
-        candidates.add(new Candidate("BRUNO SILVA", 250, false));
-        candidates.add(new Candidate("PEDRO SILVA", 25, false));
-        candidates.add(new Candidate("JOAO SILVA", 10, false));
-        candidates.add(new Candidate("MARIA SILVA", 30, false));
+        candidates.add(new Candidate("Lula", new PoliticalParty("PT"), true));
+        candidates.add(new Candidate("Fulano", new PoliticalParty("PT"), true));
+        candidates.add(new Candidate("John Doe", new PoliticalParty("PSOl"), true));
+        candidates.add(new Candidate("Sicrano", new PoliticalParty("PTdoB"), true));
+        candidates.add(new Candidate("Bolsonaro", new PoliticalParty("PTB"), true));
+        candidates.add(new Candidate("MARCELO SANTOS", new PoliticalParty("PTB"), false));
+        candidates.add(new Candidate("BRUNO SILVA", new PoliticalParty("PC"), false));
+        candidates.add(new Candidate("PEDRO SILVA", new PoliticalParty("REPUBLICANOS"), false));
+        candidates.add(new Candidate("JOAO SILVA", new PoliticalParty("PTB"), false));
+        candidates.add(new Candidate("MARIA SILVA", new PoliticalParty("PCB"), false));
     }
 
     @Override
