@@ -4,6 +4,7 @@ import presentation.terminal.ElectedCandidatesIfWasMajorityView;
 import presentation.terminal.ElectedCandidatesView;
 import presentation.terminal.MostVotedCandidatesView;
 import presentation.terminal.NumberOfElectedCandidatesView;
+import presentation.terminal.TotalVotesView;
 
 public class App {
     public static void main(String[] args) {
@@ -13,11 +14,14 @@ public class App {
         View electedCandidatesIfWasMajority = new ElectedCandidatesIfWasMajorityView();
         View electedCandidatesBenefitedProportionalView = new ElectedCandidatesBenefitedProportionalView();
 
+        View totalVotesView = new TotalVotesView();
+
         numberOfElectedCandidates.view();
         electedCandidates.view();
         mostVotedCandidates.view();
         electedCandidatesIfWasMajority.view();
         electedCandidatesBenefitedProportionalView.view();
+        totalVotesView.view();
 
     }
 }
