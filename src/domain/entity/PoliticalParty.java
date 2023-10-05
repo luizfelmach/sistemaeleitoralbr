@@ -10,7 +10,8 @@ public class PoliticalParty {
     private int captionVotes;
     Set<Candidate> candidates = new HashSet<>();
 
-    public PoliticalParty(String name) {
+    public PoliticalParty(int politicalPartyNumber, String name) {
+        this.politicalPartyNumber = politicalPartyNumber;
         this.name = name;
     }
 

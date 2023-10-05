@@ -11,10 +11,14 @@ public class Candidate {
     private boolean isElected;
     private LocalDate birthdayDate;
 
-    public Candidate(String name, PoliticalParty politicalParty, boolean isElected) {
+    public Candidate(String name, PoliticalParty politicalParty, boolean isElected, Genre genre,
+            LocalDate birthdayDate) {
         this.name = name;
         this.politicalParty = politicalParty;
         this.isElected = isElected;
+        this.genre = genre;
+        this.birthdayDate = birthdayDate;
+        politicalParty.addCandidate(this);
     }
 
     public enum Genre {

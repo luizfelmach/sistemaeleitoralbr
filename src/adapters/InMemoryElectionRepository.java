@@ -13,18 +13,9 @@ import domain.repository.ElectionRepository;
 
 public class InMemoryElectionRepository implements ElectionRepository {
     private Set<Candidate> candidates = new HashSet<>();
+    private Set<PoliticalParty> politicalParties = new HashSet<>();
 
     public InMemoryElectionRepository() {
-        candidates.add(new Candidate("Lula", new PoliticalParty("PT"), true));
-        candidates.add(new Candidate("Fulano", new PoliticalParty("PT"), true));
-        candidates.add(new Candidate("John Doe", new PoliticalParty("PSOl"), true));
-        candidates.add(new Candidate("Sicrano", new PoliticalParty("PTdoB"), true));
-        candidates.add(new Candidate("Bolsonaro", new PoliticalParty("PTB"), true));
-        candidates.add(new Candidate("MARCELO SANTOS", new PoliticalParty("PTB"), false));
-        candidates.add(new Candidate("BRUNO SILVA", new PoliticalParty("PC"), false));
-        candidates.add(new Candidate("PEDRO SILVA", new PoliticalParty("REPUBLICANOS"), false));
-        candidates.add(new Candidate("JOAO SILVA", new PoliticalParty("PTB"), false));
-        candidates.add(new Candidate("MARIA SILVA", new PoliticalParty("PCB"), false));
     }
 
     @Override
@@ -67,6 +58,6 @@ public class InMemoryElectionRepository implements ElectionRepository {
 
     @Override
     public Set<PoliticalParty> getAllPoliticalParty() {
-        throw new UnsupportedOperationException("Unimplemented method 'getAllPoliticalParty'");
+        return politicalParties;
     }
 }
