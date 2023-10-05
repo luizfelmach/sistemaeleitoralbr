@@ -13,7 +13,7 @@ public class InMemoryCandidateRepository implements CandidateRepository {
     }
 
     @Override
-    public int getNumberOfElectedCandidates() {
-        return 0;
+    public Set<Candidate> getElectedCandidates() {
+        return new HashSet<>();
     }
 }

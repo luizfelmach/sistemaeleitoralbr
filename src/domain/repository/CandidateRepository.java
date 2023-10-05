@@ -7,5 +7,5 @@ import domain.entity.Candidate;
 public interface CandidateRepository {
     public Set<Candidate> getAllCandidates();
 
-    public int getNumberOfElectedCandidates();
+    public Set<Candidate> getElectedCandidates();
 }
