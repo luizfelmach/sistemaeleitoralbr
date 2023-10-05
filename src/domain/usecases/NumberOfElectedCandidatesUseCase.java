@@ -1,6 +1,5 @@
 package domain.usecases;
 
-import domain.entity.Candidate;
 import domain.repository.CandidateRepository;
 
 public class NumberOfElectedCandidatesUseCase {
@@ -11,12 +10,6 @@ public class NumberOfElectedCandidatesUseCase {
     }
 
     public int execute() {
-        int totalElected = 0;
-        for (Candidate candidate : candidateRepository.getAllCandidates()) {
-            if (candidate.isElected()) {
-                totalElected += 1;
-            }
-        }
-        return totalElected;
+        return candidateRepository.getNumberOfElectedCandidates();
     }
 }
