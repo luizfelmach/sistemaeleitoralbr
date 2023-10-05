@@ -6,6 +6,13 @@ public class Candidate {
     private int totalVotes;
     private boolean isElected;
 
+    public Candidate(String name, String politicalParty, int totalVotes, boolean isElected) {
+        this.name = name;
+        this.politicalParty = politicalParty;
+        this.totalVotes = totalVotes;
+        this.isElected = isElected;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
