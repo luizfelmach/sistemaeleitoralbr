@@ -1,7 +1,10 @@
 package config;
 
+import java.time.LocalDate;
+
 public class AppConfig {
     static ElectionType electionType = ElectionType.FEDERAL;
+    static LocalDate electionDate = LocalDate.now();
 
     public static void setElectionType(ElectionType electionType) {
         AppConfig.electionType = electionType;
