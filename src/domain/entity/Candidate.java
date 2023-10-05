@@ -1,5 +1,7 @@
 package domain.entity;
 
+import java.time.LocalDate;
+
 public class Candidate {
     private String name;
     private PoliticalParty politicalParty;
@@ -7,6 +9,7 @@ public class Candidate {
     private int rankingMostVoted;
     private Genre genre;
     private boolean isElected;
+    LocalDate birthdayDate;
 
     public Candidate(String name, PoliticalParty politicalParty, boolean isElected) {
         this.name = name;
