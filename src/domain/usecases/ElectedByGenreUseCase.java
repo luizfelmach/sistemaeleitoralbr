@@ -17,7 +17,6 @@ public class ElectedByGenreUseCase {
         Set<Candidate> electedCandidates = electionRepository.getElectedCandidates();
         int totalFemale = 0;
         int totalMale = 0;
-        int totalElectedCandidates = electedCandidates.size();
         for (Candidate candidate : electedCandidates) {
             if (candidate.getGenre() == Genre.FEMALE) {
                 totalFemale += 1;
@@ -25,16 +24,18 @@ public class ElectedByGenreUseCase {
                 totalMale += 1;
             }
         }
-        return new Result(totalFemale / totalElectedCandidates, totalMale / totalElectedCandidates);
+        return new Result(totalFemale, totalMale, electedCandidates.size());
     }
 
     public class Result {
-        public float female;
-        public float male;
+        public int female;
+        public int male;
+        public int total;
 
-        public Result(float female, float male) {
+        public Result(int female, int male, int total) {
             this.female = female;
             this.male = male;
+            this.total = total;
         }
     }
 }

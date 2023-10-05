@@ -9,7 +9,7 @@ public class Candidate {
     private int rankingMostVoted;
     private Genre genre;
     private boolean isElected;
-    LocalDate birthdayDate;
+    private LocalDate birthdayDate;
 
     public Candidate(String name, PoliticalParty politicalParty, boolean isElected) {
         this.name = name;
@@ -55,5 +55,9 @@ public class Candidate {
 
     public Genre getGenre() {
         return genre;
+    }
+
+    public LocalDate getBirthdayDate() {
+        return birthdayDate;
     }
 }

@@ -20,16 +20,18 @@ public class TotalVotesUseCase {
             totalRollCallVotes += politicalParty.getRollCallVotes();
             totalCaptionVotes += politicalParty.getCaptionVotes();
         }
-        return new Result(totalRollCallVotes, totalCaptionVotes);
+        return new Result(totalRollCallVotes, totalCaptionVotes, totalRollCallVotes + totalCaptionVotes);
     }
 
     public class Result {
         public int totalRollCallVotes;
         public int totalCaptionVotes;
+        public int totalVotes;
 
-        public Result(int totalRollCallVotes, int totalCaptionVotes) {
+        public Result(int totalRollCallVotes, int totalCaptionVotes, int totalVotes) {
             this.totalRollCallVotes = totalRollCallVotes;
             this.totalCaptionVotes = totalCaptionVotes;
+            this.totalVotes = totalVotes;
         }
     }
 }

@@ -17,6 +17,10 @@ public class AppConfig {
         return "estaduais";
     }
 
+    public static LocalDate getElectionDate() {
+        return electionDate;
+    }
+
     public enum ElectionType {
         FEDERAL, STATE
     }
