@@ -2,20 +2,15 @@ package domain.entity;
 
 public class Candidate {
     private String name;
-    private String politicalParty;
+    private PoliticalParty politicalParty;
     private int totalVotes;
     private int rankingMostVoted;
     private boolean isElected;
 
-    public Candidate(String name, String politicalParty, int totalVotes, boolean isElected) {
+    public Candidate(String name, int totalVotes, boolean isElected) {
         this.name = name;
-        this.politicalParty = politicalParty;
         this.totalVotes = totalVotes;
         this.isElected = isElected;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getName() {
@@ -26,11 +21,7 @@ public class Candidate {
         return totalVotes;
     }
 
-    public void setPoliticalParty(String politicalParty) {
-        this.politicalParty = politicalParty;
-    }
-
-    public String getPoliticalParty() {
+    public PoliticalParty getPoliticalParty() {
         return politicalParty;
     }
 

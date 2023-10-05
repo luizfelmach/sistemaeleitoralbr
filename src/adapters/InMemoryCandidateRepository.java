@@ -14,16 +14,16 @@ public class InMemoryCandidateRepository implements CandidateRepository {
     private Set<Candidate> candidates = new HashSet<>();
 
     public InMemoryCandidateRepository() {
-        candidates.add(new Candidate("Lula", "PT", 11, true));
-        candidates.add(new Candidate("Fulano", "PSOl", 200, true));
-        candidates.add(new Candidate("John Doe", "REPUBLICANOS", 100, true));
-        candidates.add(new Candidate("Sicrano", "PTB", 40, true));
-        candidates.add(new Candidate("Bolsonaro", "Novo", 90, true));
-        candidates.add(new Candidate("MARCELO SANTOS", "PODE", 5, false));
-        candidates.add(new Candidate("BRUNO SILVA", "PT", 250, false));
-        candidates.add(new Candidate("PEDRO SILVA", "PT", 25, false));
-        candidates.add(new Candidate("JOAO SILVA", "PT", 10, false));
-        candidates.add(new Candidate("MARIA SILVA", "PT", 30, false));
+        candidates.add(new Candidate("Lula", 11, true));
+        candidates.add(new Candidate("Fulano", 200, true));
+        candidates.add(new Candidate("John Doe", 100, true));
+        candidates.add(new Candidate("Sicrano", 40, true));
+        candidates.add(new Candidate("Bolsonaro", 90, true));
+        candidates.add(new Candidate("MARCELO SANTOS", 5, false));
+        candidates.add(new Candidate("BRUNO SILVA", 250, false));
+        candidates.add(new Candidate("PEDRO SILVA", 25, false));
+        candidates.add(new Candidate("JOAO SILVA", 10, false));
+        candidates.add(new Candidate("MARIA SILVA", 30, false));
     }
 
     @Override
