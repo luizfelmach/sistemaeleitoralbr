@@ -13,7 +13,6 @@ public class App {
         View mostVotedCandidates = new MostVotedCandidatesView();
         View electedCandidatesIfWasMajority = new ElectedCandidatesIfWasMajorityView();
         View electedCandidatesBenefitedProportionalView = new ElectedCandidatesBenefitedProportionalView();
-
         View totalVotesView = new TotalVotesView();
 
         numberOfElectedCandidates.view();
