@@ -7,21 +7,21 @@ public class Candidate {
     private PoliticalParty politicalParty;
     private int totalVotes;
     private int rankingMostVoted;
-    private Genre genre;
+    private Gender gender;
     private boolean isElected;
     private LocalDate birthdayDate;
 
-    public Candidate(String name, PoliticalParty politicalParty, boolean isElected, Genre genre,
+    public Candidate(String name, PoliticalParty politicalParty, boolean isElected, Gender genre,
             LocalDate birthdayDate) {
         this.name = name;
         this.politicalParty = politicalParty;
         this.isElected = isElected;
-        this.genre = genre;
+        this.gender = genre;
         this.birthdayDate = birthdayDate;
         politicalParty.addCandidate(this);
     }
 
-    public enum Genre {
+    public enum Gender {
         MALE, FEMALE;
     }
 
@@ -57,8 +57,8 @@ public class Candidate {
         return rankingMostVoted;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public Gender getGender() {
+        return gender;
     }
 
     public LocalDate getBirthdayDate() {

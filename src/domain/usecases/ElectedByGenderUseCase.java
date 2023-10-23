@@ -3,13 +3,13 @@ package domain.usecases;
 import java.util.Set;
 
 import domain.entity.Candidate;
-import domain.entity.Candidate.Genre;
+import domain.entity.Candidate.Gender;
 import domain.repository.ElectionRepository;
 
-public class ElectedByGenreUseCase {
+public class ElectedByGenderUseCase {
     ElectionRepository electionRepository;
 
-    public ElectedByGenreUseCase(ElectionRepository electionRepository) {
+    public ElectedByGenderUseCase(ElectionRepository electionRepository) {
         this.electionRepository = electionRepository;
     }
 
@@ -18,7 +18,7 @@ public class ElectedByGenreUseCase {
         int totalFemale = 0;
         int totalMale = 0;
         for (Candidate candidate : electedCandidates) {
-            if (candidate.getGenre() == Genre.FEMALE) {
+            if (candidate.getGender() == Gender.FEMALE) {
                 totalFemale += 1;
             } else {
                 totalMale += 1;
