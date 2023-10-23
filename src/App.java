@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import adapters.InMemoryElectionRepository;
 import config.AppConfig;
 import config.AppConfig.ElectionType;
 import presentation.View;
@@ -18,6 +19,8 @@ public class App {
                     "usage: java -jar deputados.jar <type> <file of candidates> <file of votings> <election date DD/MM/YYYY>");
         }
         setup(args);
+        // AppConfig.show();
+        InMemoryElectionRepository inMemoryElectionRepository = new InMemoryElectionRepository();
 
         View numberOfElectedCandidates = new NumberOfElectedCandidatesView();
         View electedCandidates = new ElectedCandidatesView();

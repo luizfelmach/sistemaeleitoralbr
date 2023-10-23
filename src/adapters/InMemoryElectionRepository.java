@@ -1,32 +1,58 @@
 package adapters;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import config.AppConfig;
 import domain.entity.Candidate;
 import domain.entity.PoliticalParty;
 import domain.repository.ElectionRepository;
 
 public class InMemoryElectionRepository implements ElectionRepository {
-    private Set<Candidate> candidates = new HashSet<>();
-    private Set<PoliticalParty> politicalParties = new HashSet<>();
+    private Map<String, Candidate> candidates = new HashMap<>();
+    private Map<String, PoliticalParty> politicalParties = new HashMap<>();
 
     public InMemoryElectionRepository() {
+        try (
+                FileInputStream fin = new FileInputStream(AppConfig.fileOfCandidate);
+                InputStreamReader r = new InputStreamReader(fin, "ISO-8859-1");
+                BufferedReader br = new BufferedReader(r);) {
+
+            String linha;
+            String buffer = "";
+            linha = br.readLine();
+            linha = br.readLine();
+
+            System.out.println(linha);
+            while (linha != null) {
+                buffer += linha + "\n";
+                linha = br.readLine();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public Set<Candidate> getAllCandidates() {
-        return new HashSet<>(candidates);
+        return new HashSet<>(candidates.values());
     }
 
     @Override
     public Set<Candidate> getElectedCandidates() {
         Set<Candidate> electedCandidates = new HashSet<>();
-        for (Candidate candidate : candidates) {
+        for (Candidate candidate : candidates.values()) {
             if (candidate.isElected()) {
                 electedCandidates.add(candidate);
             }
@@ -41,7 +67,7 @@ public class InMemoryElectionRepository implements ElectionRepository {
 
     @Override
     public List<Candidate> getMostVotedCandidates() {
-        List<Candidate> allCandidates = new ArrayList<>(candidates);
+        List<Candidate> allCandidates = new ArrayList<>(candidates.values());
         Collections.sort(allCandidates, new Comparator<Candidate>() {
             @Override
             public int compare(Candidate c1, Candidate c2) {
@@ -58,6 +84,6 @@ public class InMemoryElectionRepository implements ElectionRepository {
 
     @Override
     public Set<PoliticalParty> getAllPoliticalParty() {
-        return politicalParties;
+        return new HashSet<>(politicalParties.values());
     }
 }

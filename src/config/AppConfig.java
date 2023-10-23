@@ -30,4 +30,11 @@ public class AppConfig {
     public enum ElectionType {
         FEDERAL, STATE
     }
+
+    public static void show() {
+        System.out.printf("Election Type: %s\n", electionType);
+        System.out.printf("Election Date: %s\n", electionDate);
+        System.out.printf("File of Candidate: %s\n", fileOfCandidate);
+        System.out.printf("File of voting: %s\n", fileOfVoting);
+    }
 }
