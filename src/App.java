@@ -1,3 +1,8 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import config.AppConfig;
+import config.AppConfig.ElectionType;
 import presentation.View;
 import presentation.terminal.ElectedCandidatesBenefitedProportionalView;
 import presentation.terminal.ElectedCandidatesIfWasMajorityView;
@@ -8,6 +13,12 @@ import presentation.terminal.TotalVotesView;
 
 public class App {
     public static void main(String[] args) {
+        if (args.length != 4) {
+            throw new Error(
+                    "usage: java -jar deputados.jar <type> <file of candidates> <file of votings> <election date DD/MM/YYYY>");
+        }
+        setup(args);
+
         View numberOfElectedCandidates = new NumberOfElectedCandidatesView();
         View electedCandidates = new ElectedCandidatesView();
         View mostVotedCandidates = new MostVotedCandidatesView();
@@ -21,6 +32,17 @@ public class App {
         electedCandidatesIfWasMajority.view();
         electedCandidatesBenefitedProportionalView.view();
         totalVotesView.view();
+    }
 
+    public static void setup(String args[]) {
+        if (args[0].equals("--estadual")) {
+            AppConfig.setElectionType(ElectionType.STATE);
+        } else {
+            AppConfig.setElectionType(ElectionType.FEDERAL);
+        }
+        AppConfig.fileOfCandidate = args[1];
+        AppConfig.fileOfVoting = args[2];
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        AppConfig.setElectionDate(LocalDate.parse(args[3], formatter));
     }
 }
