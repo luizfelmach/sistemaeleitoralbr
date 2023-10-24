@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 import config.AppConfig;
 import domain.entity.Candidate;
@@ -28,15 +29,26 @@ public class InMemoryElectionRepository implements ElectionRepository {
                 InputStreamReader r = new InputStreamReader(fin, "ISO-8859-1");
                 BufferedReader br = new BufferedReader(r);) {
 
-            String linha;
-            String buffer = "";
-            linha = br.readLine();
-            linha = br.readLine();
+            String line;
+            line = br.readLine();
+            line = br.readLine();
+            while (line != null) {
+                String[] fields = line.split(";");
 
-            System.out.println(linha);
-            while (linha != null) {
-                buffer += linha + "\n";
-                linha = br.readLine();
+                String CD_CARGO = fields[13].split("\"")[1];
+                String CD_SITUACAO_CANDIDATO_TOT = fields[69].split("\"")[1];
+                String NM_URNA_CANDIDATO = fields[18].split("\"")[1];
+                String NR_CANDIDATO = fields[16].split("\"")[1];
+                String NR_PARTIDO = fields[27].split("\"")[1];
+                String SG_PARTIDO = fields[28].split("\"")[1];
+                String NR_FEDERACAO = fields[30].split("\"")[1];
+                String DT_NASCIMENTO = fields[42].split("\"")[1];
+                String CD_SIT_TOT_TURNO = fields[56].split("\"")[1];
+                String CD_GENERO = fields[45].split("\"")[1];
+                String NM_TIPO_DESTINACAO_VOTOS = fields[68].split("\"")[1];
+
+                // Candidate candidate = new Candidate(line, null, false, null, null);
+                line = br.readLine();
             }
 
         } catch (IOException e) {
