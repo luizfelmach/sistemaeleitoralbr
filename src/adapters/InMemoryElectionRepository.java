@@ -1,9 +1,5 @@
 package adapters;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,7 +12,6 @@ import java.util.Set;
 import adapters.helpers.ReadFileOfCandidate;
 import adapters.helpers.ReadFileOfVoting;
 import adapters.helpers.ReadFileOfCandidate.FieldsFileOfCandidate;
-import adapters.helpers.ReadFileOfVoting.FieldsFileOfVoting;
 import config.AppConfig;
 import config.AppConfig.ElectionType;
 import domain.entity.Candidate;
@@ -77,7 +72,7 @@ public class InMemoryElectionRepository implements ElectionRepository {
         ReadFileOfVoting fileOfVoting = new ReadFileOfVoting();
 
         while (fileOfVoting.hasMore()) {
-            FieldsFileOfVoting fields = fileOfVoting.next();
+            // FieldsFileOfVoting fields = fileOfVoting.next();
         }
 
         fileOfVoting.close();
