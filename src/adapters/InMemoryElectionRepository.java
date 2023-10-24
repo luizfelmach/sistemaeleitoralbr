@@ -12,48 +12,75 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.StringTokenizer;
 
+import adapters.helpers.ReadFileOfCandidate;
+import adapters.helpers.ReadFileOfVoting;
+import adapters.helpers.ReadFileOfCandidate.FieldsFileOfCandidate;
+import adapters.helpers.ReadFileOfVoting.FieldsFileOfVoting;
 import config.AppConfig;
+import config.AppConfig.ElectionType;
 import domain.entity.Candidate;
 import domain.entity.PoliticalParty;
 import domain.repository.ElectionRepository;
 
 public class InMemoryElectionRepository implements ElectionRepository {
     private Map<String, Candidate> candidates = new HashMap<>();
-    private Map<String, PoliticalParty> politicalParties = new HashMap<>();
+
+    private Map<Integer, PoliticalParty> politicalParties = new HashMap<>();
 
     public InMemoryElectionRepository() {
-        try (
-                FileInputStream fin = new FileInputStream(AppConfig.fileOfCandidate);
-                InputStreamReader r = new InputStreamReader(fin, "ISO-8859-1");
-                BufferedReader br = new BufferedReader(r);) {
 
-            String line;
-            line = br.readLine();
-            line = br.readLine();
-            while (line != null) {
-                String[] fields = line.split(";");
+        ReadFileOfCandidate fileOfCandidate = new ReadFileOfCandidate();
 
-                String CD_CARGO = fields[13].split("\"")[1];
-                String CD_SITUACAO_CANDIDATO_TOT = fields[69].split("\"")[1];
-                String NM_URNA_CANDIDATO = fields[18].split("\"")[1];
-                String NR_CANDIDATO = fields[16].split("\"")[1];
-                String NR_PARTIDO = fields[27].split("\"")[1];
-                String SG_PARTIDO = fields[28].split("\"")[1];
-                String NR_FEDERACAO = fields[30].split("\"")[1];
-                String DT_NASCIMENTO = fields[42].split("\"")[1];
-                String CD_SIT_TOT_TURNO = fields[56].split("\"")[1];
-                String CD_GENERO = fields[45].split("\"")[1];
-                String NM_TIPO_DESTINACAO_VOTOS = fields[68].split("\"")[1];
-
-                // Candidate candidate = new Candidate(line, null, false, null, null);
-                line = br.readLine();
+        while (fileOfCandidate.hasMore()) {
+            FieldsFileOfCandidate fields = fileOfCandidate.next();
+            String electionType = "6";
+            if (AppConfig.electionType == ElectionType.STATE) {
+                electionType = "7";
+            }
+            if (!fields.CD_CARGO.equals(electionType)) {
+                continue;
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            PoliticalParty politicalParty = politicalParties.get(fields.NR_PARTIDO);
+
+            if (politicalParty == null) {
+                PoliticalParty p = new PoliticalParty(fields.NR_PARTIDO, fields.SG_PARTIDO);
+                politicalParties.put(fields.NR_PARTIDO, p);
+                politicalParty = p;
+            }
+
+            if (!fields.CD_SITUACAO_CANDIDATO_TOT.equals("16") && !fields.CD_SITUACAO_CANDIDATO_TOT.equals("2")) {
+                continue;
+            }
+
+            boolean isElected = false;
+            Candidate.Gender gender = Candidate.Gender.MALE;
+            if (fields.CD_GENERO.equals("4")) {
+                gender = Candidate.Gender.FEMALE;
+            }
+            if (fields.CD_SIT_TOT_TURNO.equals("2") || fields.CD_SIT_TOT_TURNO.equals("3")) {
+                isElected = true;
+            }
+
+            Candidate candidate = new Candidate(
+                    fields.NM_URNA_CANDIDATO,
+                    politicalParty,
+                    isElected,
+                    gender,
+                    fields.DT_NASCIMENTO);
+            candidates.put(fields.NR_CANDIDATO, candidate);
         }
+
+        fileOfCandidate.close();
+
+        ReadFileOfVoting fileOfVoting = new ReadFileOfVoting();
+
+        while (fileOfVoting.hasMore()) {
+            FieldsFileOfVoting fields = fileOfVoting.next();
+        }
+
+        fileOfVoting.close();
     }
 
     @Override

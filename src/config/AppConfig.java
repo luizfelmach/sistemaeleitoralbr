@@ -3,7 +3,7 @@ package config;
 import java.time.LocalDate;
 
 public class AppConfig {
-    static ElectionType electionType = ElectionType.FEDERAL;
+    public static ElectionType electionType = ElectionType.FEDERAL;
     static LocalDate electionDate = LocalDate.now();
     static public String fileOfCandidate;
     static public String fileOfVoting;
