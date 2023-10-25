@@ -10,15 +10,17 @@ public class Candidate {
     private Gender gender;
     private boolean isElected;
     private LocalDate birthdayDate;
+    private int federationNumber;
 
     public Candidate(String name, PoliticalParty politicalParty, boolean isElected, Gender genre,
-            LocalDate birthdayDate) {
+            LocalDate birthdayDate, int federationNumber) {
         this.name = name;
         this.politicalParty = politicalParty;
         this.isElected = isElected;
         this.gender = genre;
         this.birthdayDate = birthdayDate;
         politicalParty.addCandidate(this);
+        this.federationNumber = federationNumber;
     }
 
     public enum Gender {
@@ -55,6 +57,10 @@ public class Candidate {
 
     public int getRankingMostVoted() {
         return rankingMostVoted;
+    }
+
+    public int getFederationNumber() {
+        return federationNumber;
     }
 
     public Gender getGender() {

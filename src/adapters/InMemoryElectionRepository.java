@@ -14,8 +14,6 @@ import adapters.helpers.ReadFileOfCandidate;
 import adapters.helpers.ReadFileOfVoting;
 import adapters.helpers.ReadFileOfCandidate.FieldsFileOfCandidate;
 import adapters.helpers.ReadFileOfVoting.FieldsFileOfVoting;
-import config.AppConfig;
-import config.AppConfig.ElectionType;
 import domain.entity.Candidate;
 import domain.entity.PoliticalParty;
 import domain.repository.ElectionRepository;
@@ -52,7 +50,8 @@ public class InMemoryElectionRepository implements ElectionRepository {
                     politicalParty,
                     isElected,
                     gender,
-                    fields.DT_NASCIMENTO);
+                    fields.DT_NASCIMENTO,
+                    fields.NR_FEDERACAO);
             candidates.put(fields.NR_CANDIDATO, candidate);
         }
         fileOfCandidate.close();

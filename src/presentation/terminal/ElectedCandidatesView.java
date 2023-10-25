@@ -1,5 +1,8 @@
 package presentation.terminal;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import config.AppConfig;
 import domain.entity.Candidate;
 import domain.usecases.ElectedCandidatesUseCase;
@@ -15,12 +18,17 @@ public class ElectedCandidatesView implements View {
 
     public void view() {
         System.out.printf("Deputados %s eleitos:\n", AppConfig.getElectionType());
+        NumberFormat formatter = NumberFormat.getInstance(Locale.of("pt", "BR"));
         int position = 1;
         for (Candidate candidate : electedCandidatesUseCase.execute()) {
-            System.out.printf("%d - %s (%s, %d votos)\n",
-                    position, candidate.getName(),
+            String withoutFederation = "*";
+            if (candidate.getFederationNumber() == -1) {
+                withoutFederation = "";
+            }
+            System.out.printf("%d - %s%s (%s, %s votos)\n",
+                    position, withoutFederation, candidate.getName(),
                     candidate.getPoliticalParty().getName(),
-                    candidate.getTotalVotes());
+                    formatter.format(candidate.getTotalVotes()));
             position += 1;
         }
     }
