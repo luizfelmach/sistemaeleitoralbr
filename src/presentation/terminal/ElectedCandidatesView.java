@@ -17,10 +17,11 @@ public class ElectedCandidatesView implements View {
         System.out.printf("Deputados %s eleitos:\n", AppConfig.getElectionType());
         int position = 1;
         for (Candidate candidate : electedCandidatesUseCase.execute()) {
-            System.out.printf("%d - %s (%s, %s votos)\n",
+            System.out.printf("%d - %s (%s, %s %s)\n",
                     position, ViewHelpers.showCandidateName(candidate),
                     candidate.getPoliticalParty().getName(),
-                    ViewHelpers.toInt(candidate.getTotalVotes()));
+                    ViewHelpers.toInt(candidate.getTotalVotes()),
+                    ViewHelpers.getSlugVote(candidate.getTotalVotes()));
             position += 1;
         }
     }

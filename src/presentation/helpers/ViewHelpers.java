@@ -18,4 +18,10 @@ public class ViewHelpers {
         }
         return withoutFederation + candidate.getName();
     }
+
+    public static String getSlugVote(int votes) {
+        if (votes <= 1)
+            return "voto";
+        return "votos";
+    }
 }
