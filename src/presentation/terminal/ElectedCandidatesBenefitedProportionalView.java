@@ -23,5 +23,4 @@ public class ElectedCandidatesBenefitedProportionalView implements View {
                     candidate.getTotalVotes());
         }
     }
-
 }
