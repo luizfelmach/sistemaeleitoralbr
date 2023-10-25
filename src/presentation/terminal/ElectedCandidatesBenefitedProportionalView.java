@@ -2,15 +2,14 @@ package presentation.terminal;
 
 import domain.entity.Candidate;
 import domain.usecases.ElectedCandidatesBenefitedProportionalUseCase;
-import factory.usecases.ElectedCandidatesBenefitedProportionalFactory;
 import presentation.View;
 
 public class ElectedCandidatesBenefitedProportionalView implements View {
     ElectedCandidatesBenefitedProportionalUseCase electedCandidatesBenefitedProportionalUseCase;
 
-    public ElectedCandidatesBenefitedProportionalView() {
-        this.electedCandidatesBenefitedProportionalUseCase = new ElectedCandidatesBenefitedProportionalFactory()
-                .create();
+    public ElectedCandidatesBenefitedProportionalView(
+            ElectedCandidatesBenefitedProportionalUseCase electedCandidatesBenefitedProportionalUseCase) {
+        this.electedCandidatesBenefitedProportionalUseCase = electedCandidatesBenefitedProportionalUseCase;
     }
 
     @Override

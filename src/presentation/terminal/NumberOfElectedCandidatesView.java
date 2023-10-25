@@ -1,14 +1,13 @@
 package presentation.terminal;
 
 import domain.usecases.NumberOfElectedCandidatesUseCase;
-import factory.usecases.NumberOfElectedCandidatesFactory;
 import presentation.View;
 
 public class NumberOfElectedCandidatesView implements View {
     NumberOfElectedCandidatesUseCase numberOfElectedCandidatesUseCase;
 
-    public NumberOfElectedCandidatesView() {
-        this.numberOfElectedCandidatesUseCase = new NumberOfElectedCandidatesFactory().create();
+    public NumberOfElectedCandidatesView(NumberOfElectedCandidatesUseCase numberOfElectedCandidatesUseCase) {
+        this.numberOfElectedCandidatesUseCase = numberOfElectedCandidatesUseCase;
     }
 
     public void view() {

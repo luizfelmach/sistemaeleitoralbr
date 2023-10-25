@@ -1,14 +1,13 @@
 package presentation.terminal;
 
 import domain.usecases.TotalVotesUseCase;
-import factory.usecases.TotalVotesFactory;
 import presentation.View;
 
 public class TotalVotesView implements View {
     TotalVotesUseCase totalVotesUseCase;
 
-    public TotalVotesView() {
-        this.totalVotesUseCase = new TotalVotesFactory().create();
+    public TotalVotesView(TotalVotesUseCase totalVotesUseCase) {
+        this.totalVotesUseCase = totalVotesUseCase;
     }
 
     public void view() {

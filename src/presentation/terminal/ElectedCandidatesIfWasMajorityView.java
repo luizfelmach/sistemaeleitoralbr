@@ -2,14 +2,14 @@ package presentation.terminal;
 
 import domain.entity.Candidate;
 import domain.usecases.ElectedCandidatesIfWasMajorityUseCase;
-import factory.usecases.ElectedCandidatesIfWasMajorityFactory;
 import presentation.View;
 
 public class ElectedCandidatesIfWasMajorityView implements View {
     ElectedCandidatesIfWasMajorityUseCase electedCandidatesIfWasMajorityUseCase;
 
-    public ElectedCandidatesIfWasMajorityView() {
-        this.electedCandidatesIfWasMajorityUseCase = new ElectedCandidatesIfWasMajorityFactory().create();
+    public ElectedCandidatesIfWasMajorityView(
+            ElectedCandidatesIfWasMajorityUseCase electedCandidatesIfWasMajorityUseCase) {
+        this.electedCandidatesIfWasMajorityUseCase = electedCandidatesIfWasMajorityUseCase;
     }
 
     @Override

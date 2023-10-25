@@ -6,14 +6,13 @@ import java.util.Locale;
 import config.AppConfig;
 import domain.entity.Candidate;
 import domain.usecases.ElectedCandidatesUseCase;
-import factory.usecases.ElectedCandidatesFactory;
 import presentation.View;
 
 public class ElectedCandidatesView implements View {
     ElectedCandidatesUseCase electedCandidatesUseCase;
 
-    public ElectedCandidatesView() {
-        this.electedCandidatesUseCase = new ElectedCandidatesFactory().create();
+    public ElectedCandidatesView(ElectedCandidatesUseCase electedCandidatesUseCase) {
+        this.electedCandidatesUseCase = electedCandidatesUseCase;
     }
 
     public void view() {

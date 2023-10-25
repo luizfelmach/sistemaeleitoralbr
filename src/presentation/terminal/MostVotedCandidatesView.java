@@ -2,14 +2,13 @@ package presentation.terminal;
 
 import domain.entity.Candidate;
 import domain.usecases.MostVotedCandidatesUseCase;
-import factory.usecases.MostVotedCandidatesFactory;
 import presentation.View;
 
 public class MostVotedCandidatesView implements View {
     MostVotedCandidatesUseCase mostVotedCandidatesUseCase;
 
-    public MostVotedCandidatesView() {
-        this.mostVotedCandidatesUseCase = new MostVotedCandidatesFactory().create();
+    public MostVotedCandidatesView(MostVotedCandidatesUseCase mostVotedCandidatesUseCase) {
+        this.mostVotedCandidatesUseCase = mostVotedCandidatesUseCase;
     }
 
     public void view() {
