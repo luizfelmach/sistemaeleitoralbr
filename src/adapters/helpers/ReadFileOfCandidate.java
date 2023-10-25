@@ -32,16 +32,16 @@ public class ReadFileOfCandidate {
     }
 
     public FieldsFileOfCandidate next() {
-        String CD_CARGO = "";
-        String CD_SITUACAO_CANDIDATO_TOT = "";
+        int CD_CARGO = 0;
+        int CD_SITUACAO_CANDIDATO_TOT = 0;
         String NM_URNA_CANDIDATO = "";
-        String NR_CANDIDATO = "";
+        int NR_CANDIDATO = 0;
         int NR_PARTIDO = 0;
         String SG_PARTIDO = "";
-        String NR_FEDERACAO = "";
+        int NR_FEDERACAO = 0;
         LocalDate DT_NASCIMENTO = null;
-        String CD_SIT_TOT_TURNO = "";
-        String CD_GENERO = "";
+        int CD_SIT_TOT_TURNO = 0;
+        int CD_GENERO = 0;
         String NM_TIPO_DESTINACAO_VOTOS = "";
 
         try {
@@ -49,16 +49,16 @@ public class ReadFileOfCandidate {
             String[] fields = nextLine.split(";");
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
 
-            CD_CARGO = fields[13].split("\"")[1];
-            CD_SITUACAO_CANDIDATO_TOT = fields[68].split("\"")[1];
+            CD_CARGO = Integer.parseInt(fields[13].split("\"")[1]);
+            CD_SITUACAO_CANDIDATO_TOT = Integer.parseInt(fields[68].split("\"")[1]);
             NM_URNA_CANDIDATO = fields[18].split("\"")[1];
-            NR_CANDIDATO = fields[16].split("\"")[1];
+            NR_CANDIDATO = Integer.parseInt(fields[16].split("\"")[1]);
             NR_PARTIDO = Integer.parseInt(fields[27].split("\"")[1]);
             SG_PARTIDO = fields[28].split("\"")[1];
-            NR_FEDERACAO = fields[30].split("\"")[1];
+            NR_FEDERACAO = Integer.parseInt(fields[30].split("\"")[1]);
             DT_NASCIMENTO = LocalDate.parse(fields[42].split("\"")[1], formatter);
-            CD_SIT_TOT_TURNO = fields[56].split("\"")[1];
-            CD_GENERO = fields[45].split("\"")[1];
+            CD_SIT_TOT_TURNO = Integer.parseInt(fields[56].split("\"")[1]);
+            CD_GENERO = Integer.parseInt(fields[45].split("\"")[1]);
             NM_TIPO_DESTINACAO_VOTOS = fields[68].split("\"")[1];
 
             nextLine = br.readLine();
@@ -91,29 +91,29 @@ public class ReadFileOfCandidate {
     }
 
     public class FieldsFileOfCandidate {
-        public final String CD_CARGO;
-        public final String CD_SITUACAO_CANDIDATO_TOT;
+        public final int CD_CARGO;
+        public final int CD_SITUACAO_CANDIDATO_TOT;
         public final String NM_URNA_CANDIDATO;
-        public final String NR_CANDIDATO;
+        public final int NR_CANDIDATO;
         public final int NR_PARTIDO;
         public final String SG_PARTIDO;
-        public final String NR_FEDERACAO;
+        public final int NR_FEDERACAO;
         public final LocalDate DT_NASCIMENTO;
-        public final String CD_SIT_TOT_TURNO;
-        public final String CD_GENERO;
+        public final int CD_SIT_TOT_TURNO;
+        public final int CD_GENERO;
         public final String NM_TIPO_DESTINACAO_VOTOS;
 
         public FieldsFileOfCandidate(
-                String CD_CARGO,
-                String CD_SITUACAO_CANDIDATO_TOT,
+                int CD_CARGO,
+                int CD_SITUACAO_CANDIDATO_TOT,
                 String NM_URNA_CANDIDATO,
-                String NR_CANDIDATO,
+                int NR_CANDIDATO,
                 int NR_PARTIDO,
                 String SG_PARTIDO,
-                String NR_FEDERACAO,
+                int NR_FEDERACAO,
                 LocalDate DT_NASCIMENTO,
-                String CD_SIT_TOT_TURNO,
-                String CD_GENERO,
+                int CD_SIT_TOT_TURNO,
+                int CD_GENERO,
                 String NM_TIPO_DESTINACAO_VOTOS) {
             this.CD_CARGO = CD_CARGO;
             this.CD_SITUACAO_CANDIDATO_TOT = CD_SITUACAO_CANDIDATO_TOT;

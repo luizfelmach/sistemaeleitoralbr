@@ -15,7 +15,7 @@ public class ReadFileOfVoting {
 
     public ReadFileOfVoting() {
         try {
-            fin = new FileInputStream(AppConfig.fileOfCandidate);
+            fin = new FileInputStream(AppConfig.fileOfVoting);
             r = new InputStreamReader(fin, "ISO-8859-1");
             br = new BufferedReader(r);
             nextLine = br.readLine();
@@ -30,23 +30,17 @@ public class ReadFileOfVoting {
     }
 
     public FieldsFileOfVoting next() {
-        String CD_CARGO = "";
-        String NR_VOTAVEL = "";
+        int CD_CARGO = 0;
+        int NR_VOTAVEL = 0;
         int QT_VOTOS = 0;
 
         try {
 
             String[] fields = nextLine.split(";");
 
-            CD_CARGO = fields[17].split("\"")[1];
-            NR_VOTAVEL = fields[19].split("\"")[1];
-            try {
-                QT_VOTOS = Integer.parseInt(fields[21].split("\"")[1]);
-            } catch (NumberFormatException e) {
-
-            } finally {
-                QT_VOTOS = 0;
-            }
+            CD_CARGO = Integer.parseInt(fields[17].split("\"")[1]);
+            NR_VOTAVEL = Integer.parseInt(fields[19].split("\"")[1]);
+            QT_VOTOS = Integer.parseInt(fields[21].split("\"")[1]);
 
             nextLine = br.readLine();
         } catch (IOException e) {
@@ -70,13 +64,13 @@ public class ReadFileOfVoting {
     }
 
     public class FieldsFileOfVoting {
-        public final String CD_CARGO;
-        public final String NR_VOTAVEL;
+        public final int CD_CARGO;
+        public final int NR_VOTAVEL;
         public final int QT_VOTOS;
 
         public FieldsFileOfVoting(
-                String CD_CARGO,
-                String NR_VOTAVEL,
+                int CD_CARGO,
+                int NR_VOTAVEL,
                 int QT_VOTOS) {
             this.CD_CARGO = CD_CARGO;
             this.NR_VOTAVEL = NR_VOTAVEL;
