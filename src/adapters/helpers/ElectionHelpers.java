@@ -5,14 +5,14 @@ import config.AppConfig.ElectionType;
 import domain.entity.Candidate;
 
 public class ElectionHelpers {
-    static public boolean isCandidatePositionValid(int candidatePosition) {
-        if (candidatePosition == 7 && AppConfig.electionType == ElectionType.FEDERAL) {
-            return true;
+    static public boolean isCandidatePositionInvalid(int candidatePosition) {
+        if (candidatePosition == 6 && AppConfig.electionType == ElectionType.FEDERAL) {
+            return false;
         }
-        if (candidatePosition == 6 && AppConfig.electionType == ElectionType.STATE) {
-            return true;
+        if (candidatePosition == 7 && AppConfig.electionType == ElectionType.STATE) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     static public boolean isInvalidVote(int number) {

@@ -31,7 +31,7 @@ public class InMemoryElectionRepository implements ElectionRepository {
         ReadFileOfCandidate fileOfCandidate = new ReadFileOfCandidate();
         while (fileOfCandidate.hasMore()) {
             FieldsFileOfCandidate fields = fileOfCandidate.next();
-            if (ElectionHelpers.isCandidatePositionValid(fields.CD_CARGO)) {
+            if (ElectionHelpers.isCandidatePositionInvalid(fields.CD_CARGO)) {
                 continue;
             }
             PoliticalParty politicalParty = politicalParties.get(fields.NR_PARTIDO);
@@ -61,7 +61,7 @@ public class InMemoryElectionRepository implements ElectionRepository {
         ReadFileOfVoting fileOfVoting = new ReadFileOfVoting();
         while (fileOfVoting.hasMore()) {
             FieldsFileOfVoting fields = fileOfVoting.next();
-            if (ElectionHelpers.isCandidatePositionValid(fields.CD_CARGO)) {
+            if (ElectionHelpers.isCandidatePositionInvalid(fields.CD_CARGO)) {
                 continue;
             }
             if (ElectionHelpers.isInvalidVote(fields.NR_VOTAVEL)) {
