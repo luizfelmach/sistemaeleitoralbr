@@ -71,7 +71,7 @@ public class InMemoryElectionRepository implements ElectionRepository {
             if (candidate != null) {
                 candidate.addVotes(fields.QT_VOTOS);
             } else {
-                PoliticalParty politicalParty = politicalParties.get(fields.NR_VOTAVEL);
+                // PoliticalParty politicalParty = politicalParties.get(fields.NR_VOTAVEL);
                 // politicalParty.addCaptionVote(fields.QT_VOTOS);
             }
         }
