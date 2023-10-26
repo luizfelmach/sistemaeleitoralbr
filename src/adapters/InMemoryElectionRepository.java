@@ -40,18 +40,22 @@ public class InMemoryElectionRepository implements ElectionRepository {
                 politicalParties.put(fields.NR_PARTIDO, p);
                 politicalParty = p;
             }
-            if (ElectionHelpers.isToSkipCandidate(fields.CD_SITUACAO_CANDIDATO_TOT)) {
-                continue;
-            }
+            // if (ElectionHelpers.isToSkipCandidate(fields.CD_SITUACAO_CANDIDATO_TOT)) {
+            // continue;
+            // }
+
             Candidate.Gender gender = ElectionHelpers.getCandidatGender(fields.CD_GENERO);
             boolean isElected = ElectionHelpers.isCandidateElected(fields.CD_SIT_TOT_TURNO);
+            boolean destCaptionVote = ElectionHelpers.destCaptionVote(fields.NM_TIPO_DESTINACAO_VOTOS);
+            boolean isRejected = ElectionHelpers.isToSkipCandidate(fields.CD_SITUACAO_CANDIDATO_TOT);
             Candidate candidate = new Candidate(
                     fields.NM_URNA_CANDIDATO,
                     politicalParty,
                     isElected,
                     gender,
                     fields.DT_NASCIMENTO,
-                    fields.NR_FEDERACAO);
+                    fields.NR_FEDERACAO,
+                    destCaptionVote, isRejected);
             candidates.put(fields.NR_CANDIDATO, candidate);
         }
         fileOfCandidate.close();
@@ -71,8 +75,10 @@ public class InMemoryElectionRepository implements ElectionRepository {
             if (candidate != null) {
                 candidate.addVotes(fields.QT_VOTOS);
             } else {
-                // PoliticalParty politicalParty = politicalParties.get(fields.NR_VOTAVEL);
-                // politicalParty.addCaptionVote(fields.QT_VOTOS);
+                PoliticalParty politicalParty = politicalParties.get(fields.NR_VOTAVEL);
+                if (politicalParty != null) {
+                    politicalParty.addCaptionVote(fields.QT_VOTOS);
+                }
             }
         }
         fileOfVoting.close();

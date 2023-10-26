@@ -42,4 +42,11 @@ public class ElectionHelpers {
         }
         return false;
     }
+
+    static public boolean destCaptionVote(String code) {
+        if (code.equals("Válido (legenda)")) {
+            return true;
+        }
+        return false;
+    }
 }

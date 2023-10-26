@@ -11,9 +11,11 @@ public class Candidate {
     private boolean isElected;
     private LocalDate birthdayDate;
     private int federationNumber;
+    private boolean destCaptionVote;
+    private boolean isRejected;
 
     public Candidate(String name, PoliticalParty politicalParty, boolean isElected, Gender genre,
-            LocalDate birthdayDate, int federationNumber) {
+            LocalDate birthdayDate, int federationNumber, boolean destCaptionVote, boolean isRejected) {
         this.name = name;
         this.politicalParty = politicalParty;
         this.isElected = isElected;
@@ -21,6 +23,8 @@ public class Candidate {
         this.birthdayDate = birthdayDate;
         politicalParty.addCandidate(this);
         this.federationNumber = federationNumber;
+        this.destCaptionVote = destCaptionVote;
+        this.isRejected = isRejected;
     }
 
     public enum Gender {
@@ -36,7 +40,19 @@ public class Candidate {
     }
 
     public void addVotes(int partial) {
-        totalVotes += partial;
+        if (isRejected) {
+            if (destCaptionVote) {
+                politicalParty.addCaptionVote(partial);
+            }
+            return;
+        }
+        if (destCaptionVote) {
+            politicalParty.addCaptionVote(partial);
+
+        } else {
+            totalVotes += partial;
+            politicalParty.addRollCallVote(partial);
+        }
     }
 
     public PoliticalParty getPoliticalParty() {

@@ -44,7 +44,7 @@ public class PoliticalParty {
     }
 
     public void addCaptionVote(int partial) {
-        rollCallVotes += partial;
+        captionVotes += partial;
     }
 
     public int getPoliticalPartyNumber() {

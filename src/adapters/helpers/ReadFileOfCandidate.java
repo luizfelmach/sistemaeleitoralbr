@@ -59,7 +59,7 @@ public class ReadFileOfCandidate {
             DT_NASCIMENTO = LocalDate.parse(fields[42].split("\"")[1], formatter);
             CD_SIT_TOT_TURNO = Integer.parseInt(fields[56].split("\"")[1]);
             CD_GENERO = Integer.parseInt(fields[45].split("\"")[1]);
-            NM_TIPO_DESTINACAO_VOTOS = fields[68].split("\"")[1];
+            NM_TIPO_DESTINACAO_VOTOS = fields[67].split("\"")[1];
 
             nextLine = br.readLine();
         } catch (IOException e) {
