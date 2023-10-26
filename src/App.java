@@ -4,6 +4,7 @@ import java.time.format.DateTimeFormatter;
 import adapters.InMemoryElectionRepository;
 import config.AppConfig;
 import config.AppConfig.ElectionType;
+import domain.usecases.ElectedByAgeGroupUseCase;
 import domain.usecases.ElectedByGenderUseCase;
 import domain.usecases.ElectedCandidatesBenefitedProportionalUseCase;
 import domain.usecases.ElectedCandidatesIfWasMajorityUseCase;
@@ -12,6 +13,7 @@ import domain.usecases.MostVotedCandidatesUseCase;
 import domain.usecases.NumberOfElectedCandidatesUseCase;
 import domain.usecases.TotalVotesUseCase;
 import presentation.View;
+import presentation.terminal.ElectedByAgeGroupView;
 import presentation.terminal.ElectedByGenderView;
 import presentation.terminal.ElectedCandidatesBenefitedProportionalView;
 import presentation.terminal.ElectedCandidatesIfWasMajorityView;
@@ -43,6 +45,8 @@ public class App {
                                 inMemoryElectionRepository);
                 ElectedCandidatesBenefitedProportionalUseCase electedCandidatesBenefitedProportionalUseCase = new ElectedCandidatesBenefitedProportionalUseCase(
                                 inMemoryElectionRepository);
+                ElectedByAgeGroupUseCase electedByAgeGroupUseCase = new ElectedByAgeGroupUseCase(
+                                inMemoryElectionRepository);
                 ElectedByGenderUseCase electedByGenderUseCase = new ElectedByGenderUseCase(inMemoryElectionRepository);
                 TotalVotesUseCase totalVotesUseCase = new TotalVotesUseCase(inMemoryElectionRepository);
 
@@ -55,6 +59,7 @@ public class App {
                                 electedCandidatesIfWasMajorityUseCase);
                 View electedCandidatesBenefitedProportionalView = new ElectedCandidatesBenefitedProportionalView(
                                 electedCandidatesBenefitedProportionalUseCase);
+                View electedByAgeGroupView = new ElectedByAgeGroupView(electedByAgeGroupUseCase);
                 View electedByGenderView = new ElectedByGenderView(electedByGenderUseCase);
                 View totalVotesView = new TotalVotesView(totalVotesUseCase);
 
@@ -63,6 +68,7 @@ public class App {
                 mostVotedCandidates.view();
                 electedCandidatesIfWasMajority.view();
                 electedCandidatesBenefitedProportionalView.view();
+                electedByAgeGroupView.view();
                 electedByGenderView.view();
                 totalVotesView.view();
         }

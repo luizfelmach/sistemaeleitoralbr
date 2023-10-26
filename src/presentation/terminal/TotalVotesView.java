@@ -15,10 +15,10 @@ public class TotalVotesView implements View {
         TotalVotesUseCase.Result result = totalVotesUseCase.execute();
         float rollCallPercent = (float) result.totalRollCallVotes / (result.totalVotes + 1);
         float captionPercent = (float) result.totalCaptionVotes / (result.totalVotes + 1);
-        System.out.printf("Total de votos válidos:\t\t%s\n", ViewHelpers.toInt(result.totalVotes));
-        System.out.printf("Total de votos nominais:\t%s (%.2f%%)\n", ViewHelpers.toInt(result.totalRollCallVotes),
+        System.out.printf("Total de votos válidos:    %s\n", ViewHelpers.toInt(result.totalVotes));
+        System.out.printf("Total de votos nominais:   %s (%.2f%%)\n", ViewHelpers.toInt(result.totalRollCallVotes),
                 rollCallPercent * 100);
-        System.out.printf("Total de votos de legenda:\t%s (%.2f%%)\n", ViewHelpers.toInt(result.totalCaptionVotes),
+        System.out.printf("Total de votos de legenda: %s (%.2f%%)\n", ViewHelpers.toInt(result.totalCaptionVotes),
                 captionPercent * 100);
     }
 }

@@ -7,10 +7,10 @@ import config.AppConfig;
 import domain.entity.Candidate;
 import domain.repository.ElectionRepository;
 
-public class VotesByAgeGroupUseCase {
+public class ElectedByAgeGroupUseCase {
     ElectionRepository electionRepository;
 
-    public VotesByAgeGroupUseCase(ElectionRepository electionRepository) {
+    public ElectedByAgeGroupUseCase(ElectionRepository electionRepository) {
         this.electionRepository = electionRepository;
     }
 
@@ -25,15 +25,19 @@ public class VotesByAgeGroupUseCase {
         for (Candidate candidate : candidates) {
             if (electionDate.getYear() - candidate.getBirthdayDate().getYear() < 30) {
                 lessThan30 += 1;
+                continue;
             }
             if (electionDate.getYear() - candidate.getBirthdayDate().getYear() < 40) {
                 between30and40 += 1;
+                continue;
             }
             if (electionDate.getYear() - candidate.getBirthdayDate().getYear() < 50) {
                 between40and50 += 1;
+                continue;
             }
             if (electionDate.getYear() - candidate.getBirthdayDate().getYear() < 60) {
                 between50and60 += 1;
+                continue;
             } else {
                 greaterThan60 += 1;
             }
@@ -48,12 +52,12 @@ public class VotesByAgeGroupUseCase {
     }
 
     public class Result {
-        int lessThan30;
-        int between30and40;
-        int between40and50;
-        int between50and60;
-        int greaterThan60;
-        int total;
+        public int lessThan30;
+        public int between30and40;
+        public int between40and50;
+        public int between50and60;
+        public int greaterThan60;
+        public int total;
 
         public Result(
                 int lessThan30,
