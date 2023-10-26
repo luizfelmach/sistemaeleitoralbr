@@ -4,6 +4,7 @@ import java.time.format.DateTimeFormatter;
 import adapters.InMemoryElectionRepository;
 import config.AppConfig;
 import config.AppConfig.ElectionType;
+import domain.usecases.ElectedByGenderUseCase;
 import domain.usecases.ElectedCandidatesBenefitedProportionalUseCase;
 import domain.usecases.ElectedCandidatesIfWasMajorityUseCase;
 import domain.usecases.ElectedCandidatesUseCase;
@@ -11,6 +12,7 @@ import domain.usecases.MostVotedCandidatesUseCase;
 import domain.usecases.NumberOfElectedCandidatesUseCase;
 import domain.usecases.TotalVotesUseCase;
 import presentation.View;
+import presentation.terminal.ElectedByGenderView;
 import presentation.terminal.ElectedCandidatesBenefitedProportionalView;
 import presentation.terminal.ElectedCandidatesIfWasMajorityView;
 import presentation.terminal.ElectedCandidatesView;
@@ -41,6 +43,7 @@ public class App {
                                 inMemoryElectionRepository);
                 ElectedCandidatesBenefitedProportionalUseCase electedCandidatesBenefitedProportionalUseCase = new ElectedCandidatesBenefitedProportionalUseCase(
                                 inMemoryElectionRepository);
+                ElectedByGenderUseCase electedByGenderUseCase = new ElectedByGenderUseCase(inMemoryElectionRepository);
                 TotalVotesUseCase totalVotesUseCase = new TotalVotesUseCase(inMemoryElectionRepository);
 
                 // Presentation
@@ -52,6 +55,7 @@ public class App {
                                 electedCandidatesIfWasMajorityUseCase);
                 View electedCandidatesBenefitedProportionalView = new ElectedCandidatesBenefitedProportionalView(
                                 electedCandidatesBenefitedProportionalUseCase);
+                View electedByGenderView = new ElectedByGenderView(electedByGenderUseCase);
                 View totalVotesView = new TotalVotesView(totalVotesUseCase);
 
                 numberOfElectedCandidates.view();
@@ -59,6 +63,7 @@ public class App {
                 mostVotedCandidates.view();
                 electedCandidatesIfWasMajority.view();
                 electedCandidatesBenefitedProportionalView.view();
+                electedByGenderView.view();
                 totalVotesView.view();
         }
 
