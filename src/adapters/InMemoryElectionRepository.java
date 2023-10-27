@@ -59,8 +59,10 @@ public class InMemoryElectionRepository implements ElectionRepository {
 
             if (ElectionHelpers.destCaptionVote(fields.NM_TIPO_DESTINACAO_VOTOS)) {
                 captionCandidates.put(NR_CANDIDATO, candidate);
+                candidate.setCaptionCandidate(true);
             } else if (ElectionHelpers.isCandidateRejected(fields.CD_SITUACAO_CANDIDATO_TOT)) {
                 rejectedCandidates.put(NR_CANDIDATO, candidate);
+                candidate.setRejected(true);
             } else {
                 candidates.put(NR_CANDIDATO, candidate);
             }

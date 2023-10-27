@@ -12,6 +12,8 @@ public class Candidate {
     private boolean isElected;
     private LocalDate birthdayDate;
     private int federationNumber;
+    private boolean rejected;
+    private boolean captionCandidate;
 
     public Candidate(String name, int number, PoliticalParty politicalParty, boolean isElected, Gender genre,
             LocalDate birthdayDate, int federationNumber) {
@@ -48,6 +50,22 @@ public class Candidate {
 
     public PoliticalParty getPoliticalParty() {
         return politicalParty;
+    }
+
+    public void setRejected(boolean rejected) {
+        this.rejected = rejected;
+    }
+
+    public boolean isRejected() {
+        return rejected;
+    }
+
+    public void setCaptionCandidate(boolean captionCandidate) {
+        this.captionCandidate = captionCandidate;
+    }
+
+    public boolean isCaptionCandidate() {
+        return captionCandidate;
     }
 
     public void setIsElected(boolean isElected) {

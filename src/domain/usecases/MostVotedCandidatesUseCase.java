@@ -18,7 +18,7 @@ public class MostVotedCandidatesUseCase {
     public List<Candidate> execute() {
         List<Candidate> candidates = new ArrayList<>();
         List<Candidate> mostVotedCandidates = electionRepository.getAllCandidates();
-        Collections.sort(mostVotedCandidates, ComparatorUseCase.mostVoted);
+        Collections.sort(mostVotedCandidates, ComparatorUseCase.candidateMostVoted);
         int numberOfElectedCandidates = electionRepository.getNumberOfElectedCandidates();
         for (int i = 0; i < numberOfElectedCandidates; i++) {
             Candidate candidate = mostVotedCandidates.get(i);

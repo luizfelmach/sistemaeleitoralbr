@@ -2,11 +2,12 @@ package domain.usecases;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import domain.entity.PoliticalParty;
 import domain.repository.ElectionRepository;
+import domain.util.ComparatorUseCase;
 
 public class FirstAndLastByPoliticalPartyUseCase {
     ElectionRepository electionRepository;
@@ -17,12 +18,11 @@ public class FirstAndLastByPoliticalPartyUseCase {
 
     public List<PoliticalParty> execute() {
         List<PoliticalParty> politicalParties = new ArrayList<>(electionRepository.getAllPoliticalParty());
-        Collections.sort(politicalParties, new Comparator<PoliticalParty>() {
-            @Override
-            public int compare(PoliticalParty p1, PoliticalParty p2) {
-                return p2.getMostVoted().getTotalVotes() - p1.getMostVoted().getTotalVotes();
-            }
-        });
+        politicalParties = politicalParties
+                .stream()
+                .filter(p -> p.getMostVoted() != null)
+                .collect(Collectors.toList());
+        Collections.sort(politicalParties, ComparatorUseCase.politicalPartyMostVoted);
         return politicalParties;
     }
 }

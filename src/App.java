@@ -74,7 +74,7 @@ public class App {
                 mostVotedCandidates.view();
                 electedCandidatesIfWasMajority.view();
                 electedCandidatesBenefitedProportionalView.view();
-                // firstAndLastByPoliticalPartyView.view();
+                firstAndLastByPoliticalPartyView.view();
                 electedByAgeGroupView.view();
                 electedByGenderView.view();
                 totalVotesView.view();

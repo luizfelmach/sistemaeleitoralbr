@@ -18,7 +18,7 @@ public class ElectedCandidatesBenefitedProportionalUseCase {
     public List<Candidate> execute() {
         List<Candidate> candidates = new ArrayList<>();
         List<Candidate> mostVotedCandidates = electionRepository.getAllCandidates();
-        Collections.sort(mostVotedCandidates, ComparatorUseCase.mostVoted);
+        Collections.sort(mostVotedCandidates, ComparatorUseCase.candidateMostVoted);
         int start = electionRepository.getNumberOfElectedCandidates();
         for (int i = start; i < mostVotedCandidates.size(); i++) {
             Candidate candidate = mostVotedCandidates.get(i);

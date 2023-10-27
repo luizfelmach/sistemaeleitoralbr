@@ -18,6 +18,7 @@ public class FirstAndLastByPoliticalPartyView implements View {
     @Override
     public void view() {
         List<PoliticalParty> result = firstAndLastByPoliticalPartyUseCase.execute();
+        System.out.println("Primeiro e último colocados de cada partido:");
         int i = 1;
         for (PoliticalParty politicalParty : result) {
             System.out.printf("%d - %s - %d, %s / %s\n",

@@ -54,12 +54,14 @@ public class PoliticalParty {
     public Candidate getMostVoted() {
         Candidate candidateMostVoted = null;
         for (Candidate candidate : candidates) {
-            if (candidateMostVoted == null) {
-                candidateMostVoted = candidate;
-                continue;
-            }
-            if (candidateMostVoted.getTotalVotes() < candidate.getTotalVotes()) {
-                candidateMostVoted = candidate;
+            if (!candidate.isRejected()) {
+                if (candidateMostVoted == null) {
+                    candidateMostVoted = candidate;
+                    continue;
+                }
+                if (candidateMostVoted.getTotalVotes() < candidate.getTotalVotes()) {
+                    candidateMostVoted = candidate;
+                }
             }
         }
         return candidateMostVoted;
@@ -68,12 +70,14 @@ public class PoliticalParty {
     public Candidate getLeastVoted() {
         Candidate candidateLeastVoted = null;
         for (Candidate candidate : candidates) {
-            if (candidateLeastVoted == null) {
-                candidateLeastVoted = candidate;
-                continue;
-            }
-            if (candidateLeastVoted.getTotalVotes() > candidate.getTotalVotes()) {
-                candidateLeastVoted = candidate;
+            if (!candidate.isRejected() && !candidate.isCaptionCandidate()) {
+                if (candidateLeastVoted == null) {
+                    candidateLeastVoted = candidate;
+                    continue;
+                }
+                if (candidateLeastVoted.getTotalVotes() > candidate.getTotalVotes()) {
+                    candidateLeastVoted = candidate;
+                }
             }
         }
         return candidateLeastVoted;

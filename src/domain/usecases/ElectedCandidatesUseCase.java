@@ -16,7 +16,7 @@ public class ElectedCandidatesUseCase {
 
     public List<Candidate> execute() {
         List<Candidate> electedCandidates = electionRepository.getElectedCandidates();
-        Collections.sort(electedCandidates, ComparatorUseCase.mostVoted);
+        Collections.sort(electedCandidates, ComparatorUseCase.candidateMostVoted);
         return electedCandidates;
     }
 }
