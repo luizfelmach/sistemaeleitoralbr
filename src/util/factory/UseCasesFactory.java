@@ -5,7 +5,7 @@ import domain.usecases.*;
 
 public class UseCasesFactory {
 
-  public NumberOfElectedCandidatesUseCase report1;
+  public NumberOfVacancies report1;
   public ElectedCandidatesUseCase report2;
   public MostVotedCandidatesUseCase report3;
   public ElectedCandidatesIfWasMajorityUseCase report4;
@@ -17,7 +17,7 @@ public class UseCasesFactory {
   public TotalVotesUseCase report10;
 
   public UseCasesFactory(ElectionRepository electionRepository) {
-    report1 = new NumberOfElectedCandidatesUseCase(electionRepository);
+    report1 = new NumberOfVacancies(electionRepository);
     report2 = new ElectedCandidatesUseCase(electionRepository);
     report3 = new MostVotedCandidatesUseCase(electionRepository);
     report4 = new ElectedCandidatesIfWasMajorityUseCase(electionRepository);

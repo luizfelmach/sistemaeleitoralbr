@@ -7,7 +7,7 @@ import presentation.terminal.*;
 
 public class ViewsFactory {
 
-  public NumberOfElectedCandidatesView report1;
+  public NumberOfVacanciesView report1;
   public ElectedCandidatesView report2;
   public MostVotedCandidatesView report3;
   public ElectedCandidatesIfWasMajorityView report4;
@@ -19,7 +19,7 @@ public class ViewsFactory {
   public TotalVotesView report10;
 
   public ViewsFactory(UseCasesFactory useCases) {
-    report1 = new NumberOfElectedCandidatesView(useCases.report1);
+    report1 = new NumberOfVacanciesView(useCases.report1);
     report2 = new ElectedCandidatesView(useCases.report2);
     report3 = new MostVotedCandidatesView(useCases.report3);
     report4 = new ElectedCandidatesIfWasMajorityView(useCases.report4);
