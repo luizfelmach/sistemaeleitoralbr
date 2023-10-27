@@ -7,7 +7,7 @@ import domain.entity.Candidate;
 
 public class ViewHelpers {
     public static String toInt(int value) {
-        NumberFormat formatter = NumberFormat.getInstance(Locale.of("pt", "BR"));
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("pt", "BR"));
         return formatter.format(value);
     }
 
