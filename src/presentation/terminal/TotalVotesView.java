@@ -15,9 +15,9 @@ public class TotalVotesView implements View {
   public void view() {
     TotalVotes.Result result = totalVotes.execute();
     float rollCallPercent = (float) result.totalRollCallVotes /
-    (result.totalVotes + 1);
+    (result.totalVotes);
     float captionPercent = (float) result.totalCaptionVotes /
-    (result.totalVotes + 1);
+    (result.totalVotes);
     System.out.printf(
       "Total de votos válidos:    %s\n",
       ViewHelpers.toInt(result.totalVotes)
