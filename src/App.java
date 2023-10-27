@@ -134,18 +134,18 @@ public class App {
 
   public static void setupElectionType(String electionType) {
     if (electionType.equals("--estadual")) {
-      AppConfig.setElectionType(ElectionType.STATE);
+      AppConfig.electionType = ElectionType.STATE;
       return;
     }
     if (electionType.equals("--federal")) {
-      AppConfig.setElectionType(ElectionType.FEDERAL);
+      AppConfig.electionType = ElectionType.FEDERAL;
       return;
     }
     throw new IllegalArgumentException(electionType);
   }
 
   public static void setupFileOfCandidates(String fileOfCandidates) {
-    AppConfig.fileOfCandidate = fileOfCandidates;
+    AppConfig.fileOfCandidates = fileOfCandidates;
   }
 
   public static void setupFileOfVoting(String fileOfVoting) {
@@ -154,6 +154,6 @@ public class App {
 
   public static void setupElectionDate(String electionDate) {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
-    AppConfig.setElectionDate(LocalDate.parse(electionDate, formatter));
+    AppConfig.electionDate = LocalDate.parse(electionDate, formatter);
   }
 }
