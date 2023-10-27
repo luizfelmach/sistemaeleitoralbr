@@ -5,11 +5,11 @@ import domain.usecases.ElectedCandidatesInProportionalSystem;
 import presentation.View;
 import presentation.helpers.ViewHelpers;
 
-public class ElectedCandidatesBenefitedProportionalView implements View {
+public class ElectedCandidatesInProportionalSystemView implements View {
 
   ElectedCandidatesInProportionalSystem electedCandidatesInProportionalSystem;
 
-  public ElectedCandidatesBenefitedProportionalView(
+  public ElectedCandidatesInProportionalSystemView(
     ElectedCandidatesInProportionalSystem electedCandidatesInProportionalSystem
   ) {
     this.electedCandidatesInProportionalSystem =
