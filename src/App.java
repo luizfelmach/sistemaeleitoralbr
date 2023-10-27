@@ -1,4 +1,4 @@
-import adapters.InMemoryElectionRepository;
+import adapters.CsvElectionRepository;
 import config.AppConfig;
 import domain.repository.ElectionRepository;
 import domain.usecases.ElectedByAgeGroupUseCase;
@@ -38,7 +38,7 @@ public class App {
     AppConfig.setupFileOfVoting(args[2]);
     AppConfig.setupElectionDate(args[3]);
 
-    ElectionRepository electionRepository = new InMemoryElectionRepository();
+    ElectionRepository electionRepository = new CsvElectionRepository();
 
     NumberOfElectedCandidatesUseCase numberOfElectedCandidatesUseCase = new NumberOfElectedCandidatesUseCase(
       electionRepository
