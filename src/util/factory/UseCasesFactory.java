@@ -8,7 +8,7 @@ public class UseCasesFactory {
   public NumberOfVacancies report1;
   public ElectedCandidates report2;
   public MostVotedCandidates report3;
-  public ElectedCandidatesIfWasMajorityUseCase report4;
+  public CandidatesWouldBeElectedInMajority report4;
   public ElectedCandidatesBenefitedProportionalUseCase report5;
   public VotingByPoliticalPartyUseCase report6;
   public FirstAndLastByPoliticalPartyUseCase report7;
@@ -20,7 +20,7 @@ public class UseCasesFactory {
     report1 = new NumberOfVacancies(electionRepository);
     report2 = new ElectedCandidates(electionRepository);
     report3 = new MostVotedCandidates(electionRepository);
-    report4 = new ElectedCandidatesIfWasMajorityUseCase(electionRepository);
+    report4 = new CandidatesWouldBeElectedInMajority(electionRepository);
     report5 =
       new ElectedCandidatesBenefitedProportionalUseCase(electionRepository);
     report6 = new VotingByPoliticalPartyUseCase(electionRepository);
