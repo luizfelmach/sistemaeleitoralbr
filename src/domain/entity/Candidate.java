@@ -3,96 +3,105 @@ package domain.entity;
 import java.time.LocalDate;
 
 public class Candidate {
-    private String name;
-    private int number;
-    private PoliticalParty politicalParty;
-    private int totalVotes;
-    private int rankingMostVoted;
-    private Gender gender;
-    private boolean isElected;
-    private LocalDate birthdayDate;
-    private int federationNumber;
-    private boolean rejected;
-    private boolean captionCandidate;
 
-    public Candidate(String name, int number, PoliticalParty politicalParty, boolean isElected, Gender genre,
-            LocalDate birthdayDate, int federationNumber) {
-        this.name = name;
-        this.politicalParty = politicalParty;
-        this.isElected = isElected;
-        this.gender = genre;
-        this.birthdayDate = birthdayDate;
-        politicalParty.addCandidate(this);
-        this.federationNumber = federationNumber;
-        this.number = number;
-    }
+  private String name;
+  private int number;
+  private PoliticalParty politicalParty;
+  private int totalVotes;
+  private int rankingMostVoted;
+  private Gender gender;
+  private boolean isElected;
+  private LocalDate birthdayDate;
+  private int federationNumber;
+  private boolean rejected;
+  private boolean captionCandidate;
 
-    public int getNumber() {
-        return number;
-    }
+  public Candidate(
+    String name,
+    int number,
+    PoliticalParty politicalParty,
+    boolean isElected,
+    Gender genre,
+    LocalDate birthdayDate,
+    int federationNumber
+  ) {
+    this.name = name;
+    this.politicalParty = politicalParty;
+    this.isElected = isElected;
+    this.gender = genre;
+    this.birthdayDate = birthdayDate;
+    politicalParty.addCandidate(this);
+    this.federationNumber = federationNumber;
+    this.number = number;
+  }
 
-    public enum Gender {
-        MALE, FEMALE;
-    }
+  public int getNumber() {
+    return number;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public enum Gender {
+    MALE,
+    FEMALE,
+  }
 
-    public int getTotalVotes() {
-        return totalVotes;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void addVotes(int partial) {
-        totalVotes += partial;
-        politicalParty.addRollCallVote(partial);
-    }
+  public int getTotalVotes() {
+    return totalVotes;
+  }
 
-    public PoliticalParty getPoliticalParty() {
-        return politicalParty;
-    }
+  public void addVotes(int partial) {
+    totalVotes += partial;
+    politicalParty.addRollCallVote(partial);
+  }
 
-    public void setRejected(boolean rejected) {
-        this.rejected = rejected;
-    }
+  public PoliticalParty getPoliticalParty() {
+    return politicalParty;
+  }
 
-    public boolean isRejected() {
-        return rejected;
-    }
+  public void setRejected(boolean rejected) {
+    this.rejected = rejected;
+  }
 
-    public void setCaptionCandidate(boolean captionCandidate) {
-        this.captionCandidate = captionCandidate;
-    }
+  public boolean isRejected() {
+    return rejected;
+  }
 
-    public boolean isCaptionCandidate() {
-        return captionCandidate;
-    }
+  public void setCaptionCandidate(boolean captionCandidate) {
+    this.captionCandidate = captionCandidate;
+  }
 
-    public void setIsElected(boolean isElected) {
-        this.isElected = isElected;
-    }
+  public boolean isCaptionCandidate() {
+    return captionCandidate;
+  }
 
-    public boolean isElected() {
-        return isElected;
-    }
+  public void setIsElected(boolean isElected) {
+    this.isElected = isElected;
+  }
 
-    public void setRankingMostVoted(int rankingMostVoted) {
-        this.rankingMostVoted = rankingMostVoted;
-    }
+  public boolean isElected() {
+    return isElected;
+  }
 
-    public int getRankingMostVoted() {
-        return rankingMostVoted;
-    }
+  public void setRankingMostVoted(int rankingMostVoted) {
+    this.rankingMostVoted = rankingMostVoted;
+  }
 
-    public int getFederationNumber() {
-        return federationNumber;
-    }
+  public int getRankingMostVoted() {
+    return rankingMostVoted;
+  }
 
-    public Gender getGender() {
-        return gender;
-    }
+  public int getFederationNumber() {
+    return federationNumber;
+  }
 
-    public LocalDate getBirthdayDate() {
-        return birthdayDate;
-    }
+  public Gender getGender() {
+    return gender;
+  }
+
+  public LocalDate getBirthdayDate() {
+    return birthdayDate;
+  }
 }
