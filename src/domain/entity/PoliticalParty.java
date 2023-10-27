@@ -74,7 +74,7 @@ public class PoliticalParty {
           if (
             candidateMostVoted
               .getBirthdayDate()
-              .isBefore(candidate.getBirthdayDate())
+              .isAfter(candidate.getBirthdayDate())
           ) {
             candidateMostVoted = candidate;
           }
