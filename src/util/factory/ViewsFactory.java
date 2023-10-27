@@ -14,7 +14,7 @@ public class ViewsFactory {
   public ElectedCandidatesInProportionalSystemView report5;
   public VotesByPartyAndElectedCandidatesView report6;
   public FirstAndLastCandidatesOfEachPartyView report7;
-  public ElectedByAgeGroupView report8;
+  public ElectedCandidatesAgeDistributionView report8;
   public ElectedByGenderView report9;
   public TotalVotesView report10;
 
@@ -26,7 +26,7 @@ public class ViewsFactory {
     report5 = new ElectedCandidatesInProportionalSystemView(useCases.report5);
     report6 = new VotesByPartyAndElectedCandidatesView(useCases.report6);
     report7 = new FirstAndLastCandidatesOfEachPartyView(useCases.report7);
-    report8 = new ElectedByAgeGroupView(useCases.report8);
+    report8 = new ElectedCandidatesAgeDistributionView(useCases.report8);
     report9 = new ElectedByGenderView(useCases.report9);
     report10 = new TotalVotesView(useCases.report10);
   }

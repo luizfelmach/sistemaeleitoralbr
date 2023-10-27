@@ -12,7 +12,7 @@ public class UseCasesFactory {
   public ElectedCandidatesInProportionalSystem report5;
   public VotesByPartyAndElectedCandidates report6;
   public FirstAndLastCandidatesOfEachParty report7;
-  public ElectedByAgeGroupUseCase report8;
+  public ElectedCandidatesAgeDistribution report8;
   public ElectedByGenderUseCase report9;
   public TotalVotesUseCase report10;
 
@@ -24,7 +24,7 @@ public class UseCasesFactory {
     report5 = new ElectedCandidatesInProportionalSystem(electionRepository);
     report6 = new VotesByPartyAndElectedCandidates(electionRepository);
     report7 = new FirstAndLastCandidatesOfEachParty(electionRepository);
-    report8 = new ElectedByAgeGroupUseCase(electionRepository);
+    report8 = new ElectedCandidatesAgeDistribution(electionRepository);
     report9 = new ElectedByGenderUseCase(electionRepository);
     report10 = new TotalVotesUseCase(electionRepository);
   }

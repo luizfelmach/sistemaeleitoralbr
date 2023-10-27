@@ -7,11 +7,13 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
-public class ElectedByAgeGroupUseCase {
+public class ElectedCandidatesAgeDistribution {
 
   ElectionRepository electionRepository;
 
-  public ElectedByAgeGroupUseCase(ElectionRepository electionRepository) {
+  public ElectedCandidatesAgeDistribution(
+    ElectionRepository electionRepository
+  ) {
     this.electionRepository = electionRepository;
   }
 
