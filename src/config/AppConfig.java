@@ -4,10 +4,10 @@ import java.time.LocalDate;
 
 public class AppConfig {
 
-  public static ElectionType electionType = ElectionType.FEDERAL;
+  public static ElectionType electionType;
   public static String fileOfCandidates;
   public static String fileOfVoting;
-  public static LocalDate electionDate = LocalDate.now();
+  public static LocalDate electionDate;
 
   public enum ElectionType {
     FEDERAL,
