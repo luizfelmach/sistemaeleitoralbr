@@ -5,11 +5,11 @@ import domain.usecases.CandidatesWouldBeElectedInMajority;
 import presentation.View;
 import presentation.helpers.ViewHelpers;
 
-public class ElectedCandidatesIfWasMajorityView implements View {
+public class CandidatesWouldBeElectedInMajorityView implements View {
 
   CandidatesWouldBeElectedInMajority candidatesWouldBeElectedInMajority;
 
-  public ElectedCandidatesIfWasMajorityView(
+  public CandidatesWouldBeElectedInMajorityView(
     CandidatesWouldBeElectedInMajority candidatesWouldBeElectedInMajority
   ) {
     this.candidatesWouldBeElectedInMajority =
