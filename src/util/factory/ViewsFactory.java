@@ -37,6 +37,7 @@ public class ViewsFactory {
       report2,
       report3,
       report4,
+      report5,
       report6,
       report7,
       report8,
