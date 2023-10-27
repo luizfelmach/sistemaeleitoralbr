@@ -17,7 +17,7 @@ public class VotingByPoliticalPartyView implements View {
     @Override
     public void view() {
         List<PoliticalParty> politicalParties = votingByPoliticalPartyUseCase.execute();
-        System.out.println("Primeiro e último colocados de cada partido:");
+        System.out.println("Votação dos partidos e número de candidatos eleitos:");
         int i = 1;
         for (PoliticalParty politicalParty : politicalParties) {
             System.out.printf("%d - %s - %d, %s %s (%s %s e %s de legenda), %s %s\n",
@@ -27,7 +27,7 @@ public class VotingByPoliticalPartyView implements View {
                     ViewHelpers.getSlugVote(politicalParty.getTotalVotes()),
                     ViewHelpers.toInt(politicalParty.getRollCallVotes()),
                     politicalParty.getRollCallVotes() <= 1 ? "nominal" : "nominais",
-                    politicalParty.getCaptionVotes(),
+                    ViewHelpers.toInt(politicalParty.getCaptionVotes()),
                     politicalParty.getElectedCandidatesSize(),
                     politicalParty.getElectedCandidatesSize() <= 1 ? "candidato eleito" : "candidatos eleitos");
             i += 1;

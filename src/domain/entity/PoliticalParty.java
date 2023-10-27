@@ -66,6 +66,11 @@ public class PoliticalParty {
                     candidateMostVoted = candidate;
                     continue;
                 }
+                if (candidateMostVoted.getTotalVotes() == candidate.getTotalVotes()) {
+                    if (candidateMostVoted.getBirthdayDate().isBefore(candidate.getBirthdayDate())) {
+                        candidateMostVoted = candidate;
+                    }
+                }
                 if (candidateMostVoted.getTotalVotes() < candidate.getTotalVotes()) {
                     candidateMostVoted = candidate;
                 }
@@ -81,6 +86,11 @@ public class PoliticalParty {
                 if (candidateLeastVoted == null) {
                     candidateLeastVoted = candidate;
                     continue;
+                }
+                if (candidateLeastVoted.getTotalVotes() == candidate.getTotalVotes()) {
+                    if (candidateLeastVoted.getBirthdayDate().isBefore(candidate.getBirthdayDate())) {
+                        candidateLeastVoted = candidate;
+                    }
                 }
                 if (candidateLeastVoted.getTotalVotes() > candidate.getTotalVotes()) {
                     candidateLeastVoted = candidate;

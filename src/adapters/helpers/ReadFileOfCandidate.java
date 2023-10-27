@@ -56,7 +56,8 @@ public class ReadFileOfCandidate {
             NR_PARTIDO = Integer.parseInt(fields[27].split("\"")[1]);
             SG_PARTIDO = fields[28].split("\"")[1];
             NR_FEDERACAO = Integer.parseInt(fields[30].split("\"")[1]);
-            DT_NASCIMENTO = LocalDate.parse(fields[42].split("\"")[1], formatter);
+            DT_NASCIMENTO = LocalDate
+                    .parse(fields[42].split("\"").length > 0 ? fields[42].split("\"")[1] : "02/02/2022", formatter);
             CD_SIT_TOT_TURNO = Integer.parseInt(fields[56].split("\"")[1]);
             CD_GENERO = Integer.parseInt(fields[45].split("\"")[1]);
             NM_TIPO_DESTINACAO_VOTOS = fields[67].split("\"")[1];
