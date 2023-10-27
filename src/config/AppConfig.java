@@ -9,13 +9,6 @@ public class AppConfig {
   public static String fileOfVoting;
   public static LocalDate electionDate = LocalDate.now();
 
-  public static String getElectionType() {
-    if (electionType == ElectionType.FEDERAL) {
-      return "federais";
-    }
-    return "estaduais";
-  }
-
   public enum ElectionType {
     FEDERAL,
     STATE,
