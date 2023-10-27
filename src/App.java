@@ -2,8 +2,7 @@ import adapters.CsvElectionRepository;
 import config.AppConfig;
 import domain.repository.ElectionRepository;
 import presentation.View;
-import util.factory.UseCasesFactory;
-import util.factory.ViewsFactory;
+import util.factory.*;
 
 public class App {
 
