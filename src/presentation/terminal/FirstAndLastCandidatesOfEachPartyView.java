@@ -35,7 +35,7 @@ public class FirstAndLastCandidatesOfEachPartyView implements View {
     }
   }
 
-  public String showCandidate(Candidate candidate) {
+  private String showCandidate(Candidate candidate) {
     return String.format(
       "%s (%d, %s %s)",
       candidate.getName(),
