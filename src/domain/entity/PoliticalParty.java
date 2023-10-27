@@ -99,7 +99,7 @@ public class PoliticalParty {
           if (
             candidateLeastVoted
               .getBirthdayDate()
-              .isAfter(candidate.getBirthdayDate())
+              .isBefore(candidate.getBirthdayDate())
           ) {
             candidateLeastVoted = candidate;
           }
