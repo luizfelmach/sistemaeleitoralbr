@@ -3,7 +3,7 @@ import config.AppConfig;
 import domain.repository.ElectionRepository;
 import presentation.View;
 import util.factory.UseCasesFactory;
-import util.factory.ViewFactory;
+import util.factory.ViewsFactory;
 
 public class App {
 
@@ -22,7 +22,7 @@ public class App {
 
     ElectionRepository electionRepository = new CsvElectionRepository();
     UseCasesFactory useCases = new UseCasesFactory(electionRepository);
-    ViewFactory views = new ViewFactory(useCases);
+    ViewsFactory views = new ViewsFactory(useCases);
 
     for (View report : views.all()) {
       report.view();

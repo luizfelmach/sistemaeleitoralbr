@@ -5,7 +5,7 @@ import java.util.List;
 import presentation.View;
 import presentation.terminal.*;
 
-public class ViewFactory {
+public class ViewsFactory {
 
   public NumberOfElectedCandidatesView report1;
   public ElectedCandidatesView report2;
@@ -18,7 +18,7 @@ public class ViewFactory {
   public ElectedByGenderView report9;
   public TotalVotesView report10;
 
-  public ViewFactory(UseCasesFactory useCases) {
+  public ViewsFactory(UseCasesFactory useCases) {
     report1 = new NumberOfElectedCandidatesView(useCases.report1);
     report2 = new ElectedCandidatesView(useCases.report2);
     report3 = new MostVotedCandidatesView(useCases.report3);
