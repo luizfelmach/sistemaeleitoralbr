@@ -1,5 +1,8 @@
 package util.factory;
 
+import java.util.Arrays;
+import java.util.List;
+import presentation.View;
 import presentation.terminal.*;
 
 public class ViewFactory {
@@ -26,5 +29,19 @@ public class ViewFactory {
     report8 = new ElectedByAgeGroupView(useCases.report8);
     report9 = new ElectedByGenderView(useCases.report9);
     report10 = new TotalVotesView(useCases.report10);
+  }
+
+  public List<View> all() {
+    return Arrays.asList(
+      report1,
+      report2,
+      report3,
+      report4,
+      report6,
+      report7,
+      report8,
+      report9,
+      report10
+    );
   }
 }

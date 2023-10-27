@@ -1,6 +1,7 @@
 import adapters.CsvElectionRepository;
 import config.AppConfig;
 import domain.repository.ElectionRepository;
+import presentation.View;
 import util.factory.UseCasesFactory;
 import util.factory.ViewFactory;
 
@@ -23,34 +24,9 @@ public class App {
     UseCasesFactory useCases = new UseCasesFactory(electionRepository);
     ViewFactory views = new ViewFactory(useCases);
 
-    views.report1.view();
-    System.out.println();
-
-    views.report2.view();
-    System.out.println();
-
-    views.report3.view();
-    System.out.println();
-
-    views.report4.view();
-    System.out.println();
-
-    views.report5.view();
-    System.out.println();
-
-    views.report6.view();
-    System.out.println();
-
-    views.report7.view();
-    System.out.println();
-
-    views.report8.view();
-    System.out.println();
-
-    views.report9.view();
-    System.out.println();
-
-    views.report10.view();
-    System.out.println();
+    for (View report : views.all()) {
+      report.view();
+      System.out.println();
+    }
   }
 }
