@@ -1,13 +1,10 @@
 package adapters;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 import adapters.helpers.ElectionHelpers;
 import adapters.helpers.ReadFileOfCandidate;
@@ -20,6 +17,8 @@ import domain.repository.ElectionRepository;
 
 public class InMemoryElectionRepository implements ElectionRepository {
     private Map<Integer, Candidate> candidates = new HashMap<>();
+    private Map<Integer, Candidate> captionCandidates = new HashMap<>();
+    private Map<Integer, Candidate> rejectedCandidates = new HashMap<>();
     private Map<Integer, PoliticalParty> politicalParties = new HashMap<>();
 
     public InMemoryElectionRepository() {
@@ -31,32 +30,40 @@ public class InMemoryElectionRepository implements ElectionRepository {
         ReadFileOfCandidate fileOfCandidate = new ReadFileOfCandidate();
         while (fileOfCandidate.hasMore()) {
             FieldsFileOfCandidate fields = fileOfCandidate.next();
-            if (ElectionHelpers.isCandidatePositionInvalid(fields.CD_CARGO)) {
-                continue;
-            }
-            PoliticalParty politicalParty = politicalParties.get(fields.NR_PARTIDO);
+            int NR_PARTIDO = fields.NR_PARTIDO;
+            int NR_CANDIDATO = fields.NR_CANDIDATO;
+            int CD_CARGO = fields.CD_CARGO;
+            String SG_PARTIDO = fields.SG_PARTIDO;
+
+            PoliticalParty politicalParty = politicalParties.get(NR_PARTIDO);
             if (politicalParty == null) {
-                PoliticalParty p = new PoliticalParty(fields.NR_PARTIDO, fields.SG_PARTIDO);
-                politicalParties.put(fields.NR_PARTIDO, p);
+                PoliticalParty p = new PoliticalParty(NR_PARTIDO, SG_PARTIDO);
+                politicalParties.put(NR_PARTIDO, p);
                 politicalParty = p;
             }
-            // if (ElectionHelpers.isToSkipCandidate(fields.CD_SITUACAO_CANDIDATO_TOT)) {
-            // continue;
-            // }
+            if (ElectionHelpers.isCandidatePositionInvalid(CD_CARGO)) {
+                continue;
+            }
 
             Candidate.Gender gender = ElectionHelpers.getCandidatGender(fields.CD_GENERO);
             boolean isElected = ElectionHelpers.isCandidateElected(fields.CD_SIT_TOT_TURNO);
-            boolean destCaptionVote = ElectionHelpers.destCaptionVote(fields.NM_TIPO_DESTINACAO_VOTOS);
-            boolean isRejected = ElectionHelpers.isToSkipCandidate(fields.CD_SITUACAO_CANDIDATO_TOT);
+
             Candidate candidate = new Candidate(
                     fields.NM_URNA_CANDIDATO,
+                    NR_CANDIDATO,
                     politicalParty,
                     isElected,
                     gender,
                     fields.DT_NASCIMENTO,
-                    fields.NR_FEDERACAO,
-                    destCaptionVote, isRejected);
-            candidates.put(fields.NR_CANDIDATO, candidate);
+                    fields.NR_FEDERACAO);
+
+            if (ElectionHelpers.destCaptionVote(fields.NM_TIPO_DESTINACAO_VOTOS)) {
+                captionCandidates.put(NR_CANDIDATO, candidate);
+            } else if (ElectionHelpers.isCandidateRejected(fields.CD_SITUACAO_CANDIDATO_TOT)) {
+                rejectedCandidates.put(NR_CANDIDATO, candidate);
+            } else {
+                candidates.put(NR_CANDIDATO, candidate);
+            }
         }
         fileOfCandidate.close();
     }
@@ -65,19 +72,23 @@ public class InMemoryElectionRepository implements ElectionRepository {
         ReadFileOfVoting fileOfVoting = new ReadFileOfVoting();
         while (fileOfVoting.hasMore()) {
             FieldsFileOfVoting fields = fileOfVoting.next();
-            if (ElectionHelpers.isCandidatePositionInvalid(fields.CD_CARGO)) {
-                continue;
-            }
-            if (ElectionHelpers.isInvalidVote(fields.NR_VOTAVEL)) {
-                continue;
-            }
-            Candidate candidate = candidates.get(fields.NR_VOTAVEL);
-            if (candidate != null) {
-                candidate.addVotes(fields.QT_VOTOS);
-            } else {
-                PoliticalParty politicalParty = politicalParties.get(fields.NR_VOTAVEL);
-                if (politicalParty != null) {
-                    politicalParty.addCaptionVote(fields.QT_VOTOS);
+            int CD_CARGO = fields.CD_CARGO;
+            int NR_NOTAVEL = fields.NR_VOTAVEL;
+            int QT_VOTOS = fields.QT_VOTOS;
+            if (ElectionHelpers.isValidVote(CD_CARGO, NR_NOTAVEL)) {
+                if (candidates.containsKey(NR_NOTAVEL)) {
+                    candidates
+                            .get(NR_NOTAVEL)
+                            .addVotes(QT_VOTOS);
+                } else if (captionCandidates.containsKey(NR_NOTAVEL)) {
+                    captionCandidates
+                            .get(NR_NOTAVEL)
+                            .getPoliticalParty()
+                            .addCaptionVote(QT_VOTOS);
+                } else if (politicalParties.containsKey(NR_NOTAVEL)) {
+                    politicalParties
+                            .get(fields.NR_VOTAVEL)
+                            .addCaptionVote(QT_VOTOS);
                 }
             }
         }
@@ -85,19 +96,17 @@ public class InMemoryElectionRepository implements ElectionRepository {
     }
 
     @Override
-    public Set<Candidate> getAllCandidates() {
-        return new HashSet<>(candidates.values());
+    public List<Candidate> getAllCandidates() {
+        return new ArrayList<>(candidates.values());
     }
 
     @Override
-    public Set<Candidate> getElectedCandidates() {
-        Set<Candidate> electedCandidates = new HashSet<>();
-        for (Candidate candidate : candidates.values()) {
-            if (candidate.isElected()) {
-                electedCandidates.add(candidate);
-            }
-        }
-        return electedCandidates;
+    public List<Candidate> getElectedCandidates() {
+        return candidates
+                .values()
+                .stream()
+                .filter(c -> c.isElected())
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -106,24 +115,7 @@ public class InMemoryElectionRepository implements ElectionRepository {
     }
 
     @Override
-    public List<Candidate> getMostVotedCandidates() {
-        List<Candidate> allCandidates = new ArrayList<>(candidates.values());
-        Collections.sort(allCandidates, new Comparator<Candidate>() {
-            @Override
-            public int compare(Candidate c1, Candidate c2) {
-                return c2.getTotalVotes() - c1.getTotalVotes();
-            }
-        });
-        int position = 1;
-        for (Candidate candidate : allCandidates) {
-            candidate.setRankingMostVoted(position);
-            position += 1;
-        }
-        return allCandidates;
-    }
-
-    @Override
-    public Set<PoliticalParty> getAllPoliticalParty() {
-        return new HashSet<>(politicalParties.values());
+    public List<PoliticalParty> getAllPoliticalParty() {
+        return new ArrayList<>(politicalParties.values());
     }
 }

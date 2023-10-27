@@ -66,16 +66,16 @@ public class PoliticalParty {
     }
 
     public Candidate getLeastVoted() {
-        Candidate candidateMostVoted = null;
+        Candidate candidateLeastVoted = null;
         for (Candidate candidate : candidates) {
-            if (candidateMostVoted == null) {
-                candidateMostVoted = candidate;
+            if (candidateLeastVoted == null) {
+                candidateLeastVoted = candidate;
                 continue;
             }
-            if (candidateMostVoted.getTotalVotes() > candidate.getTotalVotes()) {
-                candidateMostVoted = candidate;
+            if (candidateLeastVoted.getTotalVotes() > candidate.getTotalVotes()) {
+                candidateLeastVoted = candidate;
             }
         }
-        return candidateMostVoted;
+        return candidateLeastVoted;
     }
 }

@@ -1,7 +1,7 @@
 package domain.usecases;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 import config.AppConfig;
 import domain.entity.Candidate;
@@ -16,7 +16,7 @@ public class ElectedByAgeGroupUseCase {
 
     public Result execute() {
         LocalDate electionDate = AppConfig.getElectionDate();
-        Set<Candidate> candidates = electionRepository.getElectedCandidates();
+        List<Candidate> candidates = electionRepository.getElectedCandidates();
         int lessThan30 = 0;
         int between30and40 = 0;
         int between40and50 = 0;

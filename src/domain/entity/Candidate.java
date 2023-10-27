@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Candidate {
     private String name;
+    private int number;
     private PoliticalParty politicalParty;
     private int totalVotes;
     private int rankingMostVoted;
@@ -11,11 +12,9 @@ public class Candidate {
     private boolean isElected;
     private LocalDate birthdayDate;
     private int federationNumber;
-    private boolean destCaptionVote;
-    private boolean isRejected;
 
-    public Candidate(String name, PoliticalParty politicalParty, boolean isElected, Gender genre,
-            LocalDate birthdayDate, int federationNumber, boolean destCaptionVote, boolean isRejected) {
+    public Candidate(String name, int number, PoliticalParty politicalParty, boolean isElected, Gender genre,
+            LocalDate birthdayDate, int federationNumber) {
         this.name = name;
         this.politicalParty = politicalParty;
         this.isElected = isElected;
@@ -23,8 +22,11 @@ public class Candidate {
         this.birthdayDate = birthdayDate;
         politicalParty.addCandidate(this);
         this.federationNumber = federationNumber;
-        this.destCaptionVote = destCaptionVote;
-        this.isRejected = isRejected;
+        this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
     }
 
     public enum Gender {
@@ -40,19 +42,8 @@ public class Candidate {
     }
 
     public void addVotes(int partial) {
-        if (isRejected) {
-            if (destCaptionVote) {
-                politicalParty.addCaptionVote(partial);
-            }
-            return;
-        }
-        if (destCaptionVote) {
-            politicalParty.addCaptionVote(partial);
-
-        } else {
-            totalVotes += partial;
-            politicalParty.addRollCallVote(partial);
-        }
+        totalVotes += partial;
+        politicalParty.addRollCallVote(partial);
     }
 
     public PoliticalParty getPoliticalParty() {

@@ -22,8 +22,18 @@ public class ElectionHelpers {
         return false;
     }
 
-    static public boolean isToSkipCandidate(int code) {
+    static public boolean isCandidateRejected(int code) {
         if (code == 16 || code == 2) {
+            return false;
+        }
+        return true;
+    }
+
+    static public boolean isValidVote(int CD_CARGO, int NR_NOTAVEL) {
+        if (isCandidatePositionInvalid(CD_CARGO)) {
+            return false;
+        }
+        if (isInvalidVote(NR_NOTAVEL)) {
             return false;
         }
         return true;

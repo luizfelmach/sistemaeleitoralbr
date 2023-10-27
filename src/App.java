@@ -9,6 +9,7 @@ import domain.usecases.ElectedByGenderUseCase;
 import domain.usecases.ElectedCandidatesBenefitedProportionalUseCase;
 import domain.usecases.ElectedCandidatesIfWasMajorityUseCase;
 import domain.usecases.ElectedCandidatesUseCase;
+import domain.usecases.FirstAndLastByPoliticalPartyUseCase;
 import domain.usecases.MostVotedCandidatesUseCase;
 import domain.usecases.NumberOfElectedCandidatesUseCase;
 import domain.usecases.TotalVotesUseCase;
@@ -18,6 +19,7 @@ import presentation.terminal.ElectedByGenderView;
 import presentation.terminal.ElectedCandidatesBenefitedProportionalView;
 import presentation.terminal.ElectedCandidatesIfWasMajorityView;
 import presentation.terminal.ElectedCandidatesView;
+import presentation.terminal.FirstAndLastByPoliticalPartyView;
 import presentation.terminal.MostVotedCandidatesView;
 import presentation.terminal.NumberOfElectedCandidatesView;
 import presentation.terminal.TotalVotesView;
@@ -45,6 +47,8 @@ public class App {
                                 inMemoryElectionRepository);
                 ElectedCandidatesBenefitedProportionalUseCase electedCandidatesBenefitedProportionalUseCase = new ElectedCandidatesBenefitedProportionalUseCase(
                                 inMemoryElectionRepository);
+                FirstAndLastByPoliticalPartyUseCase firstAndLastByPoliticalPartyUseCase = new FirstAndLastByPoliticalPartyUseCase(
+                                inMemoryElectionRepository);
                 ElectedByAgeGroupUseCase electedByAgeGroupUseCase = new ElectedByAgeGroupUseCase(
                                 inMemoryElectionRepository);
                 ElectedByGenderUseCase electedByGenderUseCase = new ElectedByGenderUseCase(inMemoryElectionRepository);
@@ -59,6 +63,8 @@ public class App {
                                 electedCandidatesIfWasMajorityUseCase);
                 View electedCandidatesBenefitedProportionalView = new ElectedCandidatesBenefitedProportionalView(
                                 electedCandidatesBenefitedProportionalUseCase);
+                View firstAndLastByPoliticalPartyView = new FirstAndLastByPoliticalPartyView(
+                                firstAndLastByPoliticalPartyUseCase);
                 View electedByAgeGroupView = new ElectedByAgeGroupView(electedByAgeGroupUseCase);
                 View electedByGenderView = new ElectedByGenderView(electedByGenderUseCase);
                 View totalVotesView = new TotalVotesView(totalVotesUseCase);
@@ -68,6 +74,7 @@ public class App {
                 mostVotedCandidates.view();
                 electedCandidatesIfWasMajority.view();
                 electedCandidatesBenefitedProportionalView.view();
+                // firstAndLastByPoliticalPartyView.view();
                 electedByAgeGroupView.view();
                 electedByGenderView.view();
                 totalVotesView.view();

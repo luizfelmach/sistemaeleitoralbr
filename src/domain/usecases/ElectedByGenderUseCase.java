@@ -1,6 +1,6 @@
 package domain.usecases;
 
-import java.util.Set;
+import java.util.List;
 
 import domain.entity.Candidate;
 import domain.entity.Candidate.Gender;
@@ -14,7 +14,7 @@ public class ElectedByGenderUseCase {
     }
 
     public Result execute() {
-        Set<Candidate> electedCandidates = electionRepository.getElectedCandidates();
+        List<Candidate> electedCandidates = electionRepository.getElectedCandidates();
         int totalFemale = 0;
         int totalMale = 0;
         for (Candidate candidate : electedCandidates) {

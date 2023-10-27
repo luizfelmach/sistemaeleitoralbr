@@ -1,6 +1,6 @@
 package domain.usecases;
 
-import java.util.Set;
+import java.util.List;
 
 import domain.entity.PoliticalParty;
 import domain.repository.ElectionRepository;
@@ -13,7 +13,7 @@ public class TotalVotesUseCase {
     }
 
     public Result execute() {
-        Set<PoliticalParty> politicalParties = electionRepository.getAllPoliticalParty();
+        List<PoliticalParty> politicalParties = electionRepository.getAllPoliticalParty();
         int totalRollCallVotes = 0;
         int totalCaptionVotes = 0;
         for (PoliticalParty politicalParty : politicalParties) {
