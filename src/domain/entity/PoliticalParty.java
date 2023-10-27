@@ -1,7 +1,9 @@
 package domain.entity;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class PoliticalParty {
     private String name;
@@ -49,6 +51,11 @@ public class PoliticalParty {
 
     public int getPoliticalPartyNumber() {
         return politicalPartyNumber;
+    }
+
+    public int getElectedCandidatesSize() {
+        List<Candidate> electedCandidates = candidates.stream().filter(c -> c.isElected()).collect(Collectors.toList());
+        return electedCandidates.size();
     }
 
     public Candidate getMostVoted() {

@@ -28,8 +28,8 @@ public class VotingByPoliticalPartyView implements View {
                     ViewHelpers.toInt(politicalParty.getRollCallVotes()),
                     politicalParty.getRollCallVotes() <= 1 ? "nominal" : "nominais",
                     politicalParty.getCaptionVotes(),
-                    politicalParty.getCandidates().size(),
-                    politicalParty.getCandidates().size() <= 1 ? "candidato eleito" : "candidatos eleitos");
+                    politicalParty.getElectedCandidatesSize(),
+                    politicalParty.getElectedCandidatesSize() <= 1 ? "candidato eleito" : "candidatos eleitos");
             i += 1;
         }
     }
