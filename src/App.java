@@ -25,15 +25,15 @@ import presentation.terminal.MostVotedCandidatesView;
 import presentation.terminal.NumberOfElectedCandidatesView;
 import presentation.terminal.TotalVotesView;
 import presentation.terminal.VotingByPoliticalPartyView;
-import utils.error.MissingArgsError;
 
 public class App {
 
   public static void main(String[] args) {
     if (args.length != 4) {
-      throw new MissingArgsError(
-        "usage: java -jar deputados.jar [--estadual/--federal] [file of candidates] [file of voting] [dd/mm/yyyy]"
+      System.err.println(
+        "usage: java -jar deputados.jar [--estadual/--federal] [file of candidates] [file of voting] dd/mm/yyyy]"
       );
+      System.exit(1);
     }
 
     setup(args);
