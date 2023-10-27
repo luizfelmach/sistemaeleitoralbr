@@ -25,7 +25,6 @@ import presentation.terminal.MostVotedCandidatesView;
 import presentation.terminal.NumberOfElectedCandidatesView;
 import presentation.terminal.TotalVotesView;
 import presentation.terminal.VotingByPoliticalPartyView;
-import util.exceptions.IllegalArgumentException;
 
 public class App {
 
@@ -36,10 +35,11 @@ public class App {
       );
       System.exit(1);
     }
-    setupElectionType(args[0]);
-    setupFileOfCandidates(args[1]);
-    setupFileOfVoting(args[2]);
-    setupElectionDate(args[3]);
+
+    AppConfig.setupElectionType(args[0]);
+    AppConfig.setupFileOfCandidates(args[1]);
+    AppConfig.setupFileOfVoting(args[2]);
+    AppConfig.setupElectionDate(args[3]);
 
     ElectionRepository electionRepository = new InMemoryElectionRepository();
 
@@ -130,30 +130,5 @@ public class App {
 
     totalVotesView.view();
     System.out.println();
-  }
-
-  public static void setupElectionType(String electionType) {
-    if (electionType.equals("--estadual")) {
-      AppConfig.electionType = ElectionType.STATE;
-      return;
-    }
-    if (electionType.equals("--federal")) {
-      AppConfig.electionType = ElectionType.FEDERAL;
-      return;
-    }
-    throw new IllegalArgumentException(electionType);
-  }
-
-  public static void setupFileOfCandidates(String fileOfCandidates) {
-    AppConfig.fileOfCandidates = fileOfCandidates;
-  }
-
-  public static void setupFileOfVoting(String fileOfVoting) {
-    AppConfig.fileOfVoting = fileOfVoting;
-  }
-
-  public static void setupElectionDate(String electionDate) {
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
-    AppConfig.electionDate = LocalDate.parse(electionDate, formatter);
   }
 }
