@@ -1,6 +1,5 @@
 import adapters.InMemoryElectionRepository;
 import config.AppConfig;
-import config.AppConfig.ElectionType;
 import domain.repository.ElectionRepository;
 import domain.usecases.ElectedByAgeGroupUseCase;
 import domain.usecases.ElectedByGenderUseCase;
@@ -12,8 +11,6 @@ import domain.usecases.MostVotedCandidatesUseCase;
 import domain.usecases.NumberOfElectedCandidatesUseCase;
 import domain.usecases.TotalVotesUseCase;
 import domain.usecases.VotingByPoliticalPartyUseCase;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import presentation.View;
 import presentation.terminal.ElectedByAgeGroupView;
 import presentation.terminal.ElectedByGenderView;
