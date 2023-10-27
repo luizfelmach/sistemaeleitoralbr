@@ -22,7 +22,7 @@ public class FirstAndLastByPoliticalPartyUseCase {
                 .stream()
                 .filter(p -> p.getMostVoted() != null)
                 .collect(Collectors.toList());
-        Collections.sort(politicalParties, ComparatorUseCase.politicalPartyMostVoted);
+        Collections.sort(politicalParties, ComparatorUseCase.politicalPartyMostVotedCandidate);
         return politicalParties;
     }
 }

@@ -13,6 +13,7 @@ import domain.usecases.FirstAndLastByPoliticalPartyUseCase;
 import domain.usecases.MostVotedCandidatesUseCase;
 import domain.usecases.NumberOfElectedCandidatesUseCase;
 import domain.usecases.TotalVotesUseCase;
+import domain.usecases.VotingByPoliticalPartyUseCase;
 import presentation.View;
 import presentation.terminal.ElectedByAgeGroupView;
 import presentation.terminal.ElectedByGenderView;
@@ -23,6 +24,7 @@ import presentation.terminal.FirstAndLastByPoliticalPartyView;
 import presentation.terminal.MostVotedCandidatesView;
 import presentation.terminal.NumberOfElectedCandidatesView;
 import presentation.terminal.TotalVotesView;
+import presentation.terminal.VotingByPoliticalPartyView;
 
 public class App {
         public static void main(String[] args) {
@@ -47,6 +49,8 @@ public class App {
                                 inMemoryElectionRepository);
                 ElectedCandidatesBenefitedProportionalUseCase electedCandidatesBenefitedProportionalUseCase = new ElectedCandidatesBenefitedProportionalUseCase(
                                 inMemoryElectionRepository);
+                VotingByPoliticalPartyUseCase votingByPoliticalPartyUseCase = new VotingByPoliticalPartyUseCase(
+                                inMemoryElectionRepository);
                 FirstAndLastByPoliticalPartyUseCase firstAndLastByPoliticalPartyUseCase = new FirstAndLastByPoliticalPartyUseCase(
                                 inMemoryElectionRepository);
                 ElectedByAgeGroupUseCase electedByAgeGroupUseCase = new ElectedByAgeGroupUseCase(
@@ -63,6 +67,7 @@ public class App {
                                 electedCandidatesIfWasMajorityUseCase);
                 View electedCandidatesBenefitedProportionalView = new ElectedCandidatesBenefitedProportionalView(
                                 electedCandidatesBenefitedProportionalUseCase);
+                View votingByPoliticalPartyView = new VotingByPoliticalPartyView(votingByPoliticalPartyUseCase);
                 View firstAndLastByPoliticalPartyView = new FirstAndLastByPoliticalPartyView(
                                 firstAndLastByPoliticalPartyUseCase);
                 View electedByAgeGroupView = new ElectedByAgeGroupView(electedByAgeGroupUseCase);
@@ -70,14 +75,34 @@ public class App {
                 View totalVotesView = new TotalVotesView(totalVotesUseCase);
 
                 numberOfElectedCandidates.view();
+                System.out.println();
+
                 electedCandidates.view();
+                System.out.println();
+
                 mostVotedCandidates.view();
+                System.out.println();
+
                 electedCandidatesIfWasMajority.view();
+                System.out.println();
+
                 electedCandidatesBenefitedProportionalView.view();
+                System.out.println();
+
+                votingByPoliticalPartyView.view();
+                System.out.println();
+
                 firstAndLastByPoliticalPartyView.view();
+                System.out.println();
+
                 electedByAgeGroupView.view();
+                System.out.println();
+
                 electedByGenderView.view();
+                System.out.println();
+
                 totalVotesView.view();
+                System.out.println();
         }
 
         public static void setup(String args[]) {

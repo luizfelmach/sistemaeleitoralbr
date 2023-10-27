@@ -24,6 +24,17 @@ public class ComparatorUseCase {
     public static Comparator<PoliticalParty> politicalPartyMostVoted = new Comparator<PoliticalParty>() {
         @Override
         public int compare(PoliticalParty p1, PoliticalParty p2) {
+            int diff = p2.getTotalVotes() - p1.getTotalVotes();
+            if (diff == 0) {
+                return p1.getPoliticalPartyNumber() - p2.getPoliticalPartyNumber();
+            }
+            return diff;
+        }
+    };
+
+    public static Comparator<PoliticalParty> politicalPartyMostVotedCandidate = new Comparator<PoliticalParty>() {
+        @Override
+        public int compare(PoliticalParty p1, PoliticalParty p2) {
             int diff = p2.getMostVoted().getTotalVotes() - p1.getMostVoted().getTotalVotes();
             if (diff == 0) {
                 return p1.getPoliticalPartyNumber() - p2.getPoliticalPartyNumber();
