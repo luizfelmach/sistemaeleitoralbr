@@ -32,7 +32,7 @@ public class App {
   public static void main(String[] args) {
     if (args.length != 4) {
       throw new MissingArgsError(
-        "usage: java -jar deputados.jar <type> <file of candidates> <file of votings> <election date DD/MM/YYYY>"
+        "usage: java -jar deputados.jar [--estadual/--federal] [file of candidates] [file of voting] [dd/mm/yyyy]"
       );
     }
 
