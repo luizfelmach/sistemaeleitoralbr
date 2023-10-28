@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
 public class PoliticalParty {
 
   private String name;
-  private int politicalPartyNumber;
+  private int number;
   private int rollCallVotes;
   private int captionVotes;
   Set<Candidate> candidates = new HashSet<>();
 
-  public PoliticalParty(int politicalPartyNumber, String name) {
-    this.politicalPartyNumber = politicalPartyNumber;
+  public PoliticalParty(int number, String name) {
+    this.number = number;
     this.name = name;
   }
 
@@ -50,8 +50,8 @@ public class PoliticalParty {
     captionVotes += partial;
   }
 
-  public int getPoliticalPartyNumber() {
-    return politicalPartyNumber;
+  public int getNumber() {
+    return number;
   }
 
   public int getElectedCandidatesSize() {

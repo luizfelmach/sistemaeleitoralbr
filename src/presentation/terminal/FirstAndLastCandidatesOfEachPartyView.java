@@ -27,7 +27,7 @@ public class FirstAndLastCandidatesOfEachPartyView implements View {
         "%d - %s - %d, %s / %s\n",
         i,
         politicalParty.getName(),
-        politicalParty.getPoliticalPartyNumber(),
+        politicalParty.getNumber(),
         showCandidate(politicalParty.getMostVoted()),
         showCandidate(politicalParty.getLeastVoted())
       );

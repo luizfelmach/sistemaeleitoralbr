@@ -26,7 +26,7 @@ public class VotesByPartyAndElectedCandidatesView implements View {
         "%d - %s - %d, %s %s (%s %s e %s de legenda), %s %s\n",
         i,
         politicalParty.getName(),
-        politicalParty.getPoliticalPartyNumber(),
+        politicalParty.getNumber(),
         ViewHelpers.toInt(politicalParty.getTotalVotes()),
         ViewHelpers.getSlugVote(politicalParty.getTotalVotes()),
         ViewHelpers.toInt(politicalParty.getRollCallVotes()),

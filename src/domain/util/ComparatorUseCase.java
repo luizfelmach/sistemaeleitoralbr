@@ -26,7 +26,7 @@ public class ComparatorUseCase {
     public int compare(PoliticalParty p1, PoliticalParty p2) {
       int diff = p2.getTotalVotes() - p1.getTotalVotes();
       if (diff == 0) {
-        return p1.getPoliticalPartyNumber() - p2.getPoliticalPartyNumber();
+        return p1.getNumber() - p2.getNumber();
       }
       return diff;
     }
@@ -38,7 +38,7 @@ public class ComparatorUseCase {
       int diff =
         p2.getMostVoted().getTotalVotes() - p1.getMostVoted().getTotalVotes();
       if (diff == 0) {
-        return p1.getPoliticalPartyNumber() - p2.getPoliticalPartyNumber();
+        return p1.getNumber() - p2.getNumber();
       }
       return diff;
     }
